@@ -11,9 +11,9 @@ if(isLoading){
     return <Loading/>
 }
     return (
-        <div className='container text-black'>
+        <div className='container text-black font-primary'>
             <h2 className='text-2xl font-semibold'>Browse Categories</h2>
-            <div className='flex items-center gap-5 py-6'>
+            <div className='flex items-center gap-1 py-6'>
                 {
                     categories.map(category=> <div key={category._id}>
                       <Link to={`/category/${category.category}`}>

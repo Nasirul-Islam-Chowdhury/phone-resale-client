@@ -1,21 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Auth } from "../../Contexts/AuthContext";
 
 const Navbar = () => {
+  const {user, logOut} = useContext(Auth)
+const handleSignout = ()=>{
+  logOut()
+  .then(()=>{})
+  .catch((e)=>console.log(e))
+}
   const menuItems = (
     <>
-     
        <li><Link  to='/'>Home</Link></li>
-       <li><Link  to='/'>About</Link></li>
-       <li><Link  to='/'>Services</Link></li>
-       <li><Link  to='/'>Signout</Link></li>
-    
-     
+       <li><Link  to='/dashboard'>Dashboard</Link></li>
     </>
   );
   return (
-    <div className="bg-green-300">
-      <div className="navbar container text-black">
+    <div className="bg-[#379389]">
+      <div className="navbar container text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -47,7 +49,11 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{menuItems}</ul>
         </div>
         <div className="navbar-end">
-          <Link className="btn btn-accent btn-outline">Signin</Link>
+          {
+            user?
+            <Link className="btn  btn-outline" onClick={handleSignout}>Signout</Link>:
+            <Link to='/signin' className="btn  btn-outline">Signin</Link> 
+          }
         </div>
       </div>
     </div>

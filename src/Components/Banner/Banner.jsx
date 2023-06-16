@@ -1,9 +1,10 @@
 import React from "react";
-import img from '../../assets/istockphoto-1388644810-612x612-removebg-preview.png'
+import animation from '../../../public/new.json'
+import Lottie from "lottie-react";
 const Banner = () => {
   return (
-    <div className="text-black h-[700px]">
-      <div className="container h-full  flex justify-between items-center font-primary py-20">
+    <div className="text-black my-20">
+      <div className="container h-full  flex justify-between items-center font-primary">
      <div className="w-3/6">
      <h1  className=" text-5xl font-semibold leading-snug ">
         Grab the best deal on your old smartphone!
@@ -16,9 +17,7 @@ const Banner = () => {
       <div className="divider w-1/2 text-sm mt-10">Or choose a category below</div>
      </div>
      <div className="w-3/6">
-        <figure>
-            <img className="w-full" src={img} alt="" />
-        </figure>
+     <Lottie animationData={animation} loop={true} />
      </div>
       </div>
     </div>

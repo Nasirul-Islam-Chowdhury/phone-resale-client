@@ -11,8 +11,13 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^4.29.12",
+    "firebase": "^9.22.2",
+    "lottie-react": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.44.3",
+    "react-hot-toast": "^2.4.1",
+    "react-image-magnify": "^2.7.4",
     "react-router-dom": "^6.12.1"
   },
   "devDependencies": {
