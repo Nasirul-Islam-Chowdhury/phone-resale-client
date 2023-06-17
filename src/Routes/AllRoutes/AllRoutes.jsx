@@ -11,6 +11,8 @@ import Myorders from '../../Pages/Myorders/Myorders';
 import Buyers from '../../Pages/Buyers/Buyers';
 import Sellers from '../../Pages/Sellers/Sellers';
 import AddProducts from '../../Pages/AddProducts/AddProducts';
+import MyProducts from '../../Pages/MyProducts/MyProducts';
+import Blog from '../../Pages/Blog/Blog';
 
 export const router = createBrowserRouter([
     {
@@ -20,6 +22,10 @@ export const router = createBrowserRouter([
             {
                 path:'/',
                 element: <Home/>
+            },
+            {
+                path:'/blog',
+                element: <Blog/>
             },
             {
                 path:'/signin',
@@ -60,6 +66,10 @@ export const router = createBrowserRouter([
             {
                 path:'/dashboard/addproducts',
                 element: <AddProducts/>
+            },
+            {
+                path:'/dashboard/myProducts',
+                element: <MyProducts/>
             }
         ]
     }
