@@ -2,6 +2,9 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import ReactImageMagnify from "react-image-magnify";
 import OrderModal from "../../SharedComponents/OrderModal/OrderModal";
+import { TiLocation } from "react-icons/ti";
+import {  FaPhoneAlt } from "react-icons/fa";
+
 
 const PhoneDetails = () => {
   const data = useLoaderData();
@@ -39,22 +42,35 @@ const PhoneDetails = () => {
             <h2 className="card-title text-2xl mb-2">Features:</h2>
             <div className="grid grid-cols-2 gap-3 w-2/3">
               <h2>Condition: {d.condition}</h2>
-              <h2>Brand: {d.brand}</h2>
-              <h2>Storage: {d.storage}</h2>
-              <h2>Model: {d.model}</h2>
+              <h2>Brand: {d.subcategory}</h2>
+         {d.storage &&  <h2>Storage: {d.storage}</h2>}
+        {d.model  &&  <h2>Model: {d.model}</h2>}
             </div>
             <h2 className="text-2xl font-bold my-2">Priceing: </h2>
-            <h2>
-              Previous Price:{" "}
-              <span className="font-bold">${d.previous_price}</span>
+         
+         <div className="grid grid-cols-2 gap-3 items-center w-2/3">
+         <h2>
+              Previous Price:
+              <span className="font-bold"> ${d.previous_price}</span>
             </h2>
-            <h2 className="my-2">
-              Selling Price: <span className="font-bold">${d.price}</span>
-            </h2>
-
+          {d.price &&  <h2 className="my-2">
+              Selling Price: <span className="font-bold"> ${ d.price}</span>
+            </h2>}
+           {d.location &&
+            <h1 className="flex gap-1 items-center">
+              Location: <span><TiLocation className="w-4 h-4"/></span> {d.location}
+            </h1>}
+            {d.number && <h1 className="flex gap-1 items-center">
+              Number: <span><FaPhoneAlt className="w-4 h-4"/></span> {d.number}
+            </h1>}
+            {d.postDate && <h1 className="flex gap-1 items-center">
+              Posted Date:  {d.postDate}
+            </h1>}
+         </div>
+           
             <div>
-              <label htmlFor="my-modal-6" className="btn">
-                open modal
+              <label htmlFor="my-modal-6" className="btn my-4">
+                Order Now
               </label>
               <OrderModal data={d} />
             </div>

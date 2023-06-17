@@ -10,6 +10,7 @@ import DashboardLayout from '../../Layout/DashboardLayout/DashboardLayout';
 import Myorders from '../../Pages/Myorders/Myorders';
 import Buyers from '../../Pages/Buyers/Buyers';
 import Sellers from '../../Pages/Sellers/Sellers';
+import AddProducts from '../../Pages/AddProducts/AddProducts';
 
 export const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
             {
                 path:'/dashboard/sellers',
                 element: <Sellers/>
+            },
+            {
+                path:'/dashboard/addproducts',
+                element: <AddProducts/>
             }
         ]
     }

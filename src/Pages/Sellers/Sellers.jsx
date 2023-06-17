@@ -23,7 +23,9 @@ const Sellers = () => {
       return <Loading />;
     }
     return (
-        <div className="overflow-x-auto text-black p-5">
+      <div className='p-5'>
+          <h1 className="text-black text-3xl font-primary font-bold mb-4">All sellers</h1>
+          <div className="overflow-x-auto text-black">
         <table className="table">
     
           <thead>
@@ -42,6 +44,8 @@ const Sellers = () => {
           </tbody>
         </table>
       </div>
+      </div>
+     
     );
 };
 
