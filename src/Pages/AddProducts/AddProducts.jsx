@@ -60,7 +60,6 @@ const AddProducts = () => {
             number,
             location,
             model,
-            postDate,
             usedYear,
             postDate,
             images: [imgData.data.url],
@@ -244,9 +243,8 @@ const AddProducts = () => {
                 onChange={(e) => setCondition(e.target.value)}
                 className="select select-bordered w-full"
               >
-                <option disabled hidden selected>
-                  What is your device condition?
-                </option>
+               
+                <option className="hidden" selected>What is your device condition?</option>
                 <option>excellent</option>
                 <option>good</option>
                 <option>fair</option>

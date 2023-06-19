@@ -3,11 +3,13 @@ import React, { useContext, useState } from 'react';
 import Loading from '../../SharedComponents/Loading/Loading';
 import { Auth } from '../../Contexts/AuthContext';
 import OrdersRow from '../Myorders/OrdersRow';
+import { toast } from 'react-hot-toast';
 
 const Buyers = () => {
     const [loading, setLoading] = useState(true);
+    const [buyers, setBuyers] = useState([])
     const { user } = useContext(Auth);
-    const { data: buyers = [], isLoading } = useQuery({
+    const { data = [], isLoading } = useQuery({
       queryKey: ["buyers", user?.email],
       queryFn: async () => {
         if (!user) return [];
@@ -16,9 +18,22 @@ const Buyers = () => {
         );
         const data = await res.json();
         setLoading(false);
+        setBuyers(data)
         return data;
       },
     });
+    const handleDeleteBuyers = (email)=>{
+      fetch(`http://localhost:7000/buyer/${email}`,{
+        method :"DELETE",
+       })
+       .then(res=>res.json())
+       .then(data=>{
+        const finalBuyers = buyers.filter((buyer)=>buyer.email !== email)
+        setBuyers(finalBuyers)
+       toast.success(`Deleted Successfully`)
+       console.log(data)
+       })
+    }
     if (loading || isLoading) {
       return <Loading />;
     }
@@ -32,15 +47,22 @@ const Buyers = () => {
             <tr className="text-black">
               <th></th>
               <th>Name</th>
-              <th></th>
               <th>Email</th>
-              <th></th>
+          
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
-    {buyers.map((order, i) =><OrdersRow key={i} i={i} order={order}/> )}
+            {
+          buyers.map((buyer, i)=> <tr key={i}>
+            <td>{i+1}</td>
+            <td>{buyer.name}</td>
+            <td>{buyer.email}</td>
+    
+            <td><button onClick={()=>handleDeleteBuyers(buyer.email)}  className='btn btn-sm btn-error'>delete</button></td>
+          </tr>)
+        }
           </tbody>
         </table>
       </div>

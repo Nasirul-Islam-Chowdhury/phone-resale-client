@@ -2,26 +2,49 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
 import { Auth } from "../../Contexts/AuthContext";
 import Loading from "../../SharedComponents/Loading/Loading";
-import OrdersRow from "../Myorders/OrdersRow";
+import { toast } from "react-hot-toast";
 
 const MyProducts = () => {
   const [loading, setLoading] = useState(true);
   const { user } = useContext(Auth);
-  const { data: myProducts = [], isLoading } = useQuery({
+  const [myProducts, setMyProducts] = useState([])
+
+  const { data = [], isLoading } = useQuery({
     queryKey: ["myProducts", user?.email],
     queryFn: async () => {
       if (!user) return [];
-      const res = await fetch(
-        `http://localhost:7000/myProducts?email=${user?.email}`
-      );
+      const res = await fetch(`http://localhost:7000/myProducts?email=${user?.email}`);
       const data = await res.json();
       setLoading(false);
+      setMyProducts(data)
       return data;
     },
   });
   if (loading || isLoading) {
     return <Loading />;
   }
+  const handleDeleteProducts = (id)=>{
+    fetch(`http://localhost:7000/myProduct/${id}`,{
+      method :"DELETE",
+     })
+     .then(res=>res.json())
+     .then(data=>{
+      const finalProducts = myProducts.filter((device)=>device._id !== id)
+      setMyProducts(finalProducts)
+     toast.success(`Deleted Successfully`)
+     console.log(data)
+     })
+  }
+  const handleAdvertise = (product)=>{
+    fetch(`http://localhost:7000/advertise/${product._id}`,{
+      method :"PUT",
+     })
+     .then(res=>res.json())
+     .then(data=>{
+     toast.success(`Advertised Successfully`)
+     })
+  }
+
   return (
     <div className="p-5">
       <h1 className="text-black text-3xl font-primary font-bold mb-4">
@@ -31,7 +54,7 @@ const MyProducts = () => {
          <div className="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-5">
                {/* row 1 */}
                {myProducts.map((order, i) => (
-             <div className="card  w-full bg-base-100 shadow-xl text-black">
+             <div key={i} className="card  w-full bg-base-100 shadow-xl text-black">
              <figure><img className="w-full h-72" src={order.images[0]} alt="Shoes" /></figure>
              <div className="card-body">
                <h2 className="card-title">{order.name}</h2>
@@ -41,8 +64,8 @@ const MyProducts = () => {
               <p>Price: ${order.price}</p>
               </div>
                <div className="card-actions justify-end mt-5">
-                 <button className="btn btn-success">Advertise</button>
-                 <button className="btn btn-error">Delete</button>
+                 <button disabled={order.role === "advertised"} onClick={()=>handleAdvertise(order)} className="btn btn-success">Advertise</button>
+                 <button onClick={()=>handleDeleteProducts(order._id)} className="btn btn-error">Delete</button>
                </div>
              </div>
            </div>

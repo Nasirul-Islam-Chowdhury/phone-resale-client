@@ -9,7 +9,7 @@ import {  FaPhoneAlt } from "react-icons/fa";
 const PhoneDetails = () => {
   const data = useLoaderData();
   return (
-    <div className="container  bg-base-100   text-black">
+    <div className="container  bg-base-100   text-black min-h-[600px]">
       {data.map((d) => (
         <div key={d._id} className="flex rounded-md shadow-xl  my-10 gap-10">
           <div className="w-1/2 ">
@@ -48,17 +48,17 @@ const PhoneDetails = () => {
             </div>
             <h2 className="text-2xl font-bold my-2">Priceing: </h2>
          
-         <div className="grid grid-cols-2 gap-3 items-center w-2/3">
+         <div className="grid grid-cols-2 gap-3 items-center w-full">
          <h2>
-              Previous Price:
+              Original Price:
               <span className="font-bold"> ${d.previous_price}</span>
             </h2>
           {d.price &&  <h2 className="my-2">
-              Selling Price: <span className="font-bold"> ${ d.price}</span>
+              Resale Price: <span className="font-bold"> ${ d.price}</span>
             </h2>}
            {d.location &&
             <h1 className="flex gap-1 items-center">
-              Location: <span><TiLocation className="w-4 h-4"/></span> {d.location}
+              <span><TiLocation className="w-6 h-6"/></span> {d.location}
             </h1>}
             {d.number && <h1 className="flex gap-1 items-center">
               Number: <span><FaPhoneAlt className="w-4 h-4"/></span> {d.number}
@@ -66,6 +66,7 @@ const PhoneDetails = () => {
             {d.postDate && <h1 className="flex gap-1 items-center">
               Posted Date:  {d.postDate}
             </h1>}
+           
          </div>
            
             <div>

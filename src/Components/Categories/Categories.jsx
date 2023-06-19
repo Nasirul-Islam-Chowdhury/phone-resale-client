@@ -11,13 +11,13 @@ if(isLoading){
     return <Loading/>
 }
     return (
-        <div className='container text-black font-primary'>
+        <div className='container text-black font-primary my-10'>
             <h2 className='text-2xl font-semibold'>Browse Categories</h2>
-            <div className='flex items-center gap-1 py-6'>
+            <div className='flex lg:flex-row flex-col items-center gap-5 py-6'>
                 {
-                    categories.map(category=> <div key={category._id}>
+                    categories.map(category=> <div className='' key={category._id}>
                       <Link to={`/category/${category.category}`}>
-                      <img className='w-96 h-60 border rounded-md' src={category.img} alt="" />
+                      <img className='w-60 h-60 border rounded-md' src={category.img} alt="" />
                       </Link>
                     </div>)
                 }

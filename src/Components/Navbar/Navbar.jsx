@@ -12,13 +12,14 @@ const handleSignout = ()=>{
   const menuItems = (
     <>
        <li><Link  to='/'>Home</Link></li>
+       <li><Link  to='/mobiles'>Mobiles</Link></li>
        <li><Link  to='/dashboard'>Dashboard</Link></li>
        <li><Link  to='/blog'>Blog</Link></li>
     </>
   );
   return (
     <div className="bg-[#379389]">
-      <div className="navbar container text-white">
+      <div className="navbar h-20 container text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -39,12 +40,12 @@ const handleSignout = ()=>{
             </label>
             <ul
               tabIndex={0}
-              className="menu  dropdown-content mt-3 p-2 shadow  rounded-box w-52 bg-[#379389] z-50"
+              className="menu dropdown-content mt-3 p-2 shadow  rounded-box w-52 bg-[#379389] z-50"
             >
               {menuItems}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">PhoneSwapZone</a>
+          <Link to='/' className="font-primary font-bold normal-case text-2xl">PhoneSwapZone</Link>
         </div>
         <div className="navbar-center  hidden lg:flex ">
           <ul className="menu menu-horizontal px-1">{menuItems}</ul>

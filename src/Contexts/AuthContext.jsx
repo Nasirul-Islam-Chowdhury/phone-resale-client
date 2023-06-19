@@ -23,6 +23,9 @@ const AuthContext = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+
+
+
   const loginUSer = (email, password) => {
     setLoader(true);
     return signInWithEmailAndPassword(auth, email, password);
@@ -58,6 +61,7 @@ const AuthContext = ({ children }) => {
     handleUpdateProfile,
     loader,
     handleGooglesignin,
+  
   };
 
   return (
