@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
+import { Auth } from '../../Contexts/AuthContext';
 
 const ErrorPage = () => {
+    const {user, logOut} = useContext(Auth)
+    const handleSignout = ()=>{
+      logOut()
+      .then(()=>{})
+      .catch((e)=>console.log(e))
+    }
     const error = useRouteError();
 
     if (isRouteErrorResponse(error)) {
@@ -13,7 +20,7 @@ const ErrorPage = () => {
             <p>You Need to Signout and login back</p>
     
             <div className='flex gap-4 my-4 justify-center'>
-                <button className='btn btn-accent text-white'>Signout</button>
+                <button onClick={handleSignout} className='btn btn-accent text-white'>Signout</button>
              
             </div>
             </div>

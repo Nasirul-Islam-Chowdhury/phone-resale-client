@@ -15,6 +15,7 @@ const handleSignout = ()=>{
        <li><Link  to='/mobiles'>Mobiles</Link></li>
        <li><Link  to='/dashboard'>Dashboard</Link></li>
        <li><Link  to='/blog'>Blog</Link></li>
+      {!user && <li><Link  to='/signup'>Signup</Link></li>}
     </>
   );
   return (

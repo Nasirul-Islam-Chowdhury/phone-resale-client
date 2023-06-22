@@ -22,12 +22,12 @@ const AdvertisedItems = () => {
     <div>
       {finalPro.length>0 && (
         <div className="container text-black font-primary">
-          <h2 className="text-3xl font-semibold lg:p-4 mb-4 lg:text-start text-center">Advertised Products</h2>
+          <h2 className="text-3xl font-semibold lg:p-4 my-8 lg:text-start text-center">Advertised Products</h2>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
             {finalPro.map((product) => (
               <div
                 key={product._id}
-                className="card w-96 card-compact lg:w-96 rounded-sm mx-auto shadow-xl"
+                className="card  card-compact lg:w-96 rounded-sm mx-auto shadow-xl"
               >
                 <figure>
                   <img className=" h-60 object-cover"  src={product.images[0]} alt="Shoes" />

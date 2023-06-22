@@ -89,7 +89,7 @@ const ReviewSlider = () => {
                 <FaStar className='w-5 h-5 text-orange-500'/>
                 <FaStar className='w-5 h-5 text-orange-500'/>
                 </div>
-                <p className='text-xl font-semibold text-center '>{review.name}</p>
+                <p className='text-xl font-semibold text-center font-primary'>{review.name}</p>
               </div>
             </div>
             )
