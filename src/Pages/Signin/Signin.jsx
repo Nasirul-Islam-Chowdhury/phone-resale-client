@@ -4,23 +4,26 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { Auth } from "../../Contexts/AuthContext";
+import useToken from "../../Hooks/useToken";
 const Signin = () => {
   const [loginError, setLoginError] = useState("");
   const [loginUserEmail, setloginUserEmail] = useState("")
   const navigate = useNavigate()
   const location = useLocation();
   const from = location.state?.from?.pathname || '/'
-
   const {loginUSer} = useContext(Auth);
   const [userEmail, setUserEmail] = useState(" ")
   const {handleGooglesignin, resetPassword} = useContext(Auth);
-
+  const [token] = useToken(loginUserEmail);
+  if(token){
+    navigate('/');
+  }
   const googleSignin = ()=>{
     handleGooglesignin()
     .then(res=>{
       toast("User Logged in Succesfully")
       console.log(res.user)
- 
+      setloginUserEmail(res.user.email)
     })
     .catch(err=>console.log(err))
   }

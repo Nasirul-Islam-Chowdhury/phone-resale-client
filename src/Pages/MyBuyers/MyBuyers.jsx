@@ -28,6 +28,9 @@ const MyBuyers = () => {
     const handleDeleteBuyers = (id)=>{
       fetch(`http://localhost:7000/seller/${id}`,{
         method :"DELETE",
+        headers:{
+          autherization: `bearer ${localStorage.getItem("accessToken")}`
+        }
        })
        .then(res=>res.json())
        .then(data=>{

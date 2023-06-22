@@ -22,7 +22,10 @@ const OrderModal = ({ data }) => {
     fetch('http://localhost:7000/orders',{
       method: "POST",
       headers:{
-        "content-type":"application/json"
+        "content-type":"application/json",
+        headers:{
+          autherization: `bearer ${localStorage.getItem("accessToken")}`
+        }
       },
       body: JSON.stringify(bookingItems)
     })

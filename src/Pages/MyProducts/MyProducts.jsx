@@ -26,6 +26,9 @@ const MyProducts = () => {
   const handleDeleteProducts = (id)=>{
     fetch(`http://localhost:7000/myProduct/${id}`,{
       method :"DELETE",
+      headers:{
+        autherization: `bearer ${localStorage.getItem("accessToken")}`
+      }
      })
      .then(res=>res.json())
      .then(data=>{

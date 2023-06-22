@@ -73,7 +73,8 @@ const CheckOutForm = ({order}) => {
         {
           method: "POST",
           headers: {
-            "content-type": "application/json"
+            "content-type": "application/json",
+            autherization: `bearer ${localStorage.getItem("accessToken")}`
           },
           body: JSON.stringify(payment),
         }

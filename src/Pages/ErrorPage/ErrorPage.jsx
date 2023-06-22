@@ -1,14 +1,24 @@
 import React, { useContext } from 'react';
-import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
+import { isRouteErrorResponse, useNavigate, useRouteError } from 'react-router-dom';
 import { Auth } from '../../Contexts/AuthContext';
 
 const ErrorPage = () => {
     const {user, logOut} = useContext(Auth)
+  const navigate = useNavigate()
     const handleSignout = ()=>{
+      console.log("hj")
       logOut()
-      .then(()=>{})
+      .then(()=>{
+        navigate('/')
+      })
       .catch((e)=>console.log(e))
     }
+    const btn = <div>
+    <div className='flex gap-4 my-4 justify-center'>
+             <button onClick={handleSignout} className='btn btn-accent text-white'>Signout</button>
+          
+         </div>
+ </div>
     const error = useRouteError();
 
     if (isRouteErrorResponse(error)) {
@@ -18,11 +28,8 @@ const ErrorPage = () => {
             <h1 className='text-4xl font-semibold ' >This page doesn't exist!</h1>
             <br />
             <p>You Need to Signout and login back</p>
-    
-            <div className='flex gap-4 my-4 justify-center'>
-                <button onClick={handleSignout} className='btn btn-accent text-white'>Signout</button>
-             
-            </div>
+        {btn}
+           
             </div>
             </div>;
       }
@@ -34,7 +41,7 @@ const ErrorPage = () => {
             <p>You Need to Signout and login back</p>
             <button>Signout</button>
             <div>
-                <button className='btn btn-accent text-white'>Signout</button>
+            {btn}
              
             </div>
             </div>;
@@ -47,7 +54,7 @@ const ErrorPage = () => {
             <p>You Need to Signout and login back</p>
             <button>Signout</button>
             <div>
-                <button className='btn btn-accent text-white'>Signout</button>
+                {btn}
              
             </div>
             </div>;
@@ -58,7 +65,7 @@ const ErrorPage = () => {
             <h1 className='text-4xl font-semibold'>🫖</h1>
             
             <p>You Need to Signout and login back</p>
-            <button>Signout</button>
+          {btn}
             <div>
                 <button className='btn btn-accent text-white'>Signout</button>
              
@@ -67,13 +74,13 @@ const ErrorPage = () => {
       }
     }
   
-    return <div className='flex justify-center items-center min-h-screen text-black '>
+    return <div className='flex flex-col justify-center items-center min-h-screen text-black '>
         <h1 className='text-4xl font-semibold'>Something went wrong</h1>
         
-        <p>You Need to Signout and login back</p>
-        <button>Signout</button>
+        <p className='my-2'>You Need to Signout and login back</p>
+   
         <div>
-            <button className='btn btn-accent text-white'>Signout</button>
+      {btn}
          
         </div>
         </div>;

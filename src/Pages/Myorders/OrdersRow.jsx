@@ -6,6 +6,9 @@ const OrdersRow = ({ order, i, setmyOrders, myOrders }) => {
   const handleCancelOrder = (_id) => {
    fetch(`http://localhost:7000/order/${_id}`,{
     method :"DELETE",
+    headers:{
+      autherization: `bearer ${localStorage.getItem("accessToken")}`
+    }
    })
    .then(res=>res.json())
    .then(data=>{

@@ -6,22 +6,23 @@ import OrdersRow from "./OrdersRow";
 
 const Myorders = () => {
   const [myOrders, setmyOrders] = useState([]);
-  const [loading, setLoading] = useState(true);
   const { user } = useContext(Auth);
   const { data: orders = [], isLoading } = useQuery({
     queryKey: ["orders", user?.email],
     queryFn: async () => {
       if (!user) return [];
-      const res = await fetch(
-        `http://localhost:7000/orders?email=${user?.email}`
-      );
+      const res = await fetch(`http://localhost:7000/orders?email=${user?.email}` ,{
+        headers:{
+          autherization: `bearer ${localStorage.getItem("accessToken")}`
+        }
+      } );
       const data = await res.json();
-      setLoading(false);
       setmyOrders(data);
+
       return data;
     },
   });
-  if (loading || isLoading) {
+  if ( isLoading) {
     return <Loading />;
   }
   return (
