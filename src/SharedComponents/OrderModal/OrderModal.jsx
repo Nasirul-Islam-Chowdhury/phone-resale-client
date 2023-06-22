@@ -29,7 +29,7 @@ const OrderModal = ({ data }) => {
     .then(res=>res.json())
     .then(data=>{
       console.log(data)
-      toast.success(`${itemName} posted successfully`)
+      toast.success(`${itemName} Ordered successfully`)
     })
 
   };
@@ -46,9 +46,6 @@ const OrderModal = ({ data }) => {
              className="grid grid-cols-1 gap-3 mt-10 bg-white"
            >
             <div className="flex justify-end">
-            {/* <button className="bg-slate-200 rounded-full p-2"  onClick={()=>setOpenModal(false)}>
-              <AiOutlineClose className="w-6 h-6   " />
-            </button> */}
             </div>
              <div>
                <p className="text-sm p-1">Product Name</p>

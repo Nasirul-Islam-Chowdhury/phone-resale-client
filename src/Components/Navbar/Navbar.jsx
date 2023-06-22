@@ -40,15 +40,15 @@ const handleSignout = ()=>{
             </label>
             <ul
               tabIndex={0}
-              className="menu dropdown-content mt-3 p-2 shadow  rounded-box w-52 bg-[#379389] z-50"
+              className="menu dropdown-content mt-3 p-2 shadow  rounded-box w-52 bg-[#379389] z-50  font-semibold"
             >
               {menuItems}
             </ul>
           </div>
-          <Link to='/' className="font-primary font-bold normal-case text-2xl">PhoneSwapZone</Link>
+          <Link to='/' className="font-primary font-bold normal-case lg:text-2xl text-xl">PhoneSwapZone</Link>
         </div>
         <div className="navbar-center  hidden lg:flex ">
-          <ul className="menu menu-horizontal px-1">{menuItems}</ul>
+          <ul className="menu menu-horizontal px-1  font-semibold">{menuItems}</ul>
         </div>
         <div className="navbar-end">
           {

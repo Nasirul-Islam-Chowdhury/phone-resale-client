@@ -51,20 +51,20 @@ const MyProducts = () => {
         My Products
       </h1>
     
-         <div className="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-5">
+         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                {/* row 1 */}
                {myProducts.map((order, i) => (
-             <div key={i} className="card  w-full bg-base-100 shadow-xl text-black">
-             <figure><img className="w-full h-72" src={order.images[0]} alt="Shoes" /></figure>
+             <div key={i} className="card w-96 bg-base-100 shadow-xl text-black">
+             <figure><img className="w-96 h-72" src={order.images[0]} alt="Shoes" /></figure>
              <div className="card-body">
                <h2 className="card-title">{order.name}</h2>
                <p>{order.description.slice(0,100)}</p>
               <div className="font-semibold flex justify-between items-center">
-              <p >Sale Status: { order.status ? order.status : "Available"}</p>
+              <p >Sale Status: { order.status}</p>
               <p>Price: ${order.price}</p>
               </div>
                <div className="card-actions justify-end mt-5">
-                 <button disabled={order.role === "advertised"} onClick={()=>handleAdvertise(order)} className="btn btn-success">Advertise</button>
+                 <button disabled={order.role === "advertised" && order.status === "sold"} onClick={()=>handleAdvertise(order)} className="btn btn-success">{order.role === "advertised" ? "Advertised" : "Advertise"}</button>
                  <button onClick={()=>handleDeleteProducts(order._id)} className="btn btn-error">Delete</button>
                </div>
              </div>

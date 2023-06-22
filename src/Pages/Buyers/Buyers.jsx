@@ -4,6 +4,7 @@ import Loading from '../../SharedComponents/Loading/Loading';
 import { Auth } from '../../Contexts/AuthContext';
 import OrdersRow from '../Myorders/OrdersRow';
 import { toast } from 'react-hot-toast';
+import {BsTruck} from 'react-icons/bs'
 
 const Buyers = () => {
     const [loading, setLoading] = useState(true);
@@ -40,7 +41,7 @@ const Buyers = () => {
     return (
   <div className='p-5'>
         <h1 className="text-black text-3xl font-primary font-bold mb-4">All buyers</h1>
-          <div className="overflow-x-auto text-black ">
+          <div className="lg:overflow-x-auto overflow-x-scroll w-full   text-black ">
         <table className="table">
     
           <thead>

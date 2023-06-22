@@ -40,7 +40,7 @@ const MyBuyers = () => {
     return (
       <div className='p-5'>
       <h1 className="text-black text-3xl font-primary font-bold mb-4">My Buyers</h1>
-      <div className="overflow-x-auto text-black">
+      <div className="text-black lg:overflow-x-auto">
     <table className="table">
 
       <thead>

@@ -11,7 +11,7 @@ const AddProducts = () => {
   let day = date.getDate();
   let month = date.getMonth() + 1;
   let year = date.getFullYear();
-  let postDate = `${day}-${month}-${year}`;
+  let PostDate = `${day}-${month}-${year}`;
   const imgHostKey = import.meta.env.VITE_imgbb_key;
   if(loading){
     return <Loading/>
@@ -61,7 +61,7 @@ const AddProducts = () => {
             location,
             model,
             usedYear,
-            postDate,
+            PostDate,
             images: [imgData.data.url],
           };
           console.log(product);
@@ -185,11 +185,11 @@ const AddProducts = () => {
                 <input
                   required 
                   readOnly
-                  defaultValue={postDate}
-                  name="location"
+                  defaultValue={PostDate}
+              
                   type="text"
                   className="w-full p-2 border rounded-lg  outline-none"
-                  placeholder="Your meeting location"
+           
                 />
               </div>
             </div>

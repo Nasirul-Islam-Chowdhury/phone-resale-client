@@ -1,5 +1,6 @@
 import React from "react";
 import { toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const OrdersRow = ({ order, i, setmyOrders, myOrders }) => {
   const handleCancelOrder = (_id) => {
@@ -21,14 +22,15 @@ const OrdersRow = ({ order, i, setmyOrders, myOrders }) => {
       <td>{order.email}</td>
       <td>{order.location? order.location : "Not found"}</td>
       <td>
-        <small className="btn btn-sm btn-success">Pay</small>
+       {order.itemPrice && !order.paid && <Link to={`/dashboard/payment/${order._id}`} className="btn btn-sm btn-info">Pay</Link>}
+       {order.itemPrice && order.paid && <small className="btn btn-sm btn-success">paid</small>}
       </td>
       <td>
         <small
           className="btn btn-sm btn-error"
           onClick={() => handleCancelOrder(order._id)}
         >
-          Cancel
+         {!order.paid? "Cancel" : "Delete"}
         </small>
       </td>
     </tr>

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Loading from "../../SharedComponents/Loading/Loading";
 import { Link } from "react-router-dom";
 
@@ -7,37 +7,43 @@ const AdvertisedItems = () => {
   const { data: products = [], isLoading } = useQuery({
     queryKey: ["advertise"],
     queryFn: () =>
-      fetch(`http://localhost:7000/advertise`).then((res) => res.json()),
+      fetch(`http://localhost:7000/advertise`)
+      .then((res) => res.json()),
+
+  
   });
   if (isLoading) {
     return <Loading />;
   }
+  const finalPro = products.filter(p=> p.status !== "sold");
+
+
   return (
     <div>
-      {products.length>0 && (
+      {finalPro.length>0 && (
         <div className="container text-black font-primary">
-          <h2 className="text-2xl font-semibold my-4">Advertised Products</h2>
+          <h2 className="text-3xl font-semibold lg:p-4 mb-4 lg:text-start text-center">Advertised Products</h2>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
-            {products.map((product) => (
+            {finalPro.map((product) => (
               <div
                 key={product._id}
-                className="card w-96 bg-base-100 shadow-xl"
+                className="card w-96 card-compact lg:w-96 rounded-sm mx-auto shadow-xl"
               >
                 <figure>
-                  <img src={product.images[0]} alt="Shoes" />
+                  <img className=" h-60 object-cover"  src={product.images[0]} alt="Shoes" />
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">{product.name}</h2>
                   <p>{product.description.slice(0, 100)}...</p>
                   <h2 className="card-title">Price: ${product.price}</h2>
                   <div className="card-actions justify-end">
-                    <Link
-                      to={`/category/${product.subcategory}/${product._id}`}
-                      className="btn btn-outline btn-accent"
-                    >
+                  <button  className=" w-24 h-8 rounded bg-[#379389] text-white  font-bold mt-4">
+                    <Link to={`/category/${product.subcategory}/${product._id}`}>
                       See Details
                     </Link>
-                  </div>
+                  </button>
+                </div>
+                  
                 </div>
               </div>
             ))}

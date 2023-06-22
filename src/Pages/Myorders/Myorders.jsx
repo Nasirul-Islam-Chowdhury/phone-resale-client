@@ -29,7 +29,7 @@ const Myorders = () => {
       <h1 className="text-black text-3xl font-primary font-bold mb-4">
         My Orders
       </h1>
-      <div className="overflow-x-auto text-black ">
+      <div className="lg:overflow-x-auto overflow-x-scroll text-black ">
         <table className="table">
           <thead>
             <tr className="text-black">
@@ -44,7 +44,7 @@ const Myorders = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {myOrders.map((order, i) => (
+            {myOrders?.map((order, i) => (
               <OrdersRow
                 key={i}
                 i={i}

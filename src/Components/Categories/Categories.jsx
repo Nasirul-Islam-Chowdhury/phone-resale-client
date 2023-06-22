@@ -12,12 +12,12 @@ if(isLoading){
 }
     return (
         <div className='container text-black font-primary my-10'>
-            <h2 className='text-2xl font-semibold'>Browse Categories</h2>
-            <div className='flex lg:flex-row flex-col items-center gap-5 py-6'>
+            <h2 className='text-3xl font-semibold lg:text-start  text-center'>Browse Categories</h2>
+            <div className='flex lg:flex-row flex-col items-center gap-5 mb-20 mt-10'>
                 {
                     categories.map(category=> <div className='' key={category._id}>
                       <Link to={`/category/${category.category}`}>
-                      <img className='w-60 h-60 border rounded-md' src={category.img} alt="" />
+                      <img className='w-full h-40 border rounded-md' src={category.img} alt="" />
                       </Link>
                     </div>)
                 }

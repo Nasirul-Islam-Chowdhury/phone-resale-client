@@ -19,7 +19,9 @@ const Signin = () => {
     handleGooglesignin()
     .then(res=>{
       toast("User Logged in Succesfully")
-      console.log(res.user)})
+      console.log(res.user)
+ 
+    })
     .catch(err=>console.log(err))
   }
 const handleResetPass = ()=>{
@@ -47,6 +49,7 @@ const handleResetPass = ()=>{
     .then(result=>{
       toast.success("User Logged in successfully")
       setloginUserEmail(data.email)
+      navigate(from, { replace : true})
       console.log(result.user)})
     .catch(error=>{
       setLoginError(error.message)

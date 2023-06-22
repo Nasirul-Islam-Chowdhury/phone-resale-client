@@ -15,11 +15,16 @@ import MyProducts from '../../Pages/MyProducts/MyProducts';
 import Blog from '../../Pages/Blog/Blog';
 import MyBuyers from '../../Pages/MyBuyers/MyBuyers';
 import Mobiles from '../../Pages/Mobiles/Mobiles';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import ErrorPage from '../../Pages/ErrorPage/ErrorPage';
+import Dashboard from '../../Pages/Dashboard/Dashboard';
+import Payment from '../../Pages/Payment/Payment';
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout/>,
+        errorElement: <ErrorPage/>,
         children:[
             {
                 path:'/',
@@ -43,7 +48,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/category/:categoryName',
-                element: <CategoryDetails/>,
+                element: <PrivateRoute><CategoryDetails/></PrivateRoute>,
                 loader: ({params})=> fetch(`http://localhost:7000/category/${params.categoryName}`)
             },
             {
@@ -55,10 +60,14 @@ export const router = createBrowserRouter([
     },
     {
         path:'/dashboard',
-        element: <DashboardLayout/>,
+        element: <PrivateRoute><DashboardLayout/></PrivateRoute>,
         children:[
             {
-                path:'/dashboard',
+                path: '/dashboard',
+                element: <Dashboard/>
+            },
+            {
+                path:'/dashboard/orders',
                 element: <Myorders/>
             },
             {
@@ -80,6 +89,11 @@ export const router = createBrowserRouter([
             {
                 path:'/dashboard/mybuyers',
                 element: <MyBuyers/>
+            },
+            {
+                path:'/dashboard/payment/:id',
+                element: <Payment/>,
+                loader: ({params})=>fetch(`http://localhost:7000/order/${params.id}`)
             }
         ]
     }
