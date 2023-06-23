@@ -100,8 +100,11 @@ const Mobiles = () => {
           </div>
         </form>
       </div>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 my-10 gap-5 px-20">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 my-10 gap-5 lg:px-20">
         {finalMob.map((mobile, i) => <MobileCards mobile={mobile} i ={i} key={i}/>)}
+      </div>
+      <div>
+        {finalMob.length < 1 && <div className="min-h-[400px] flex justify-center items-center">"No Results Found"</div>}
       </div>
     </div>
   );
