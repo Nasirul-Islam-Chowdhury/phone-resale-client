@@ -40,6 +40,20 @@ const Sellers = () => {
      console.log(data)
      })
   }
+
+  const handleverify = (email)=>{
+    fetch(`http://localhost:7000/seller/${email}`,{
+      method :"PUT",
+      headers:{
+        autherization: `bearer ${localStorage.getItem("accessToken")}`
+      }
+
+     })
+     .then(res=>res.json())
+     .then(data=>{
+     console.log(data)
+     })
+  }
   if (loading || isLoading) {
     return <Loading />;
   }
@@ -69,7 +83,7 @@ const Sellers = () => {
                 <td>{seller.name}</td>
                 <td>{seller.email}</td>
                 <td>
-                  <button className="btn btn-sm btn-success">Verify</button>
+                  <button onClick={()=>handleverify(seller.email)} className="btn btn-sm btn-success">Verify</button>
                 </td>
                 <td>
                   <button onClick={()=>handleDeleteSeller(seller.email)} className="btn btn-sm btn-error">delete</button>

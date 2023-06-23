@@ -8,6 +8,7 @@ import { FaCreativeCommonsBy } from "react-icons/fa";
 import { RxAvatar } from "react-icons/rx";
 import { BiTime } from "react-icons/bi";
 import Fade from "react-reveal/Fade";
+import MobileCards from "../../Components/MobileCards/MobileCards";
 
 const Mobiles = () => {
   const [mobiles, setMobiles] = useState([]);
@@ -100,63 +101,7 @@ const Mobiles = () => {
         </form>
       </div>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 my-10 gap-5 px-20">
-        {finalMob.map((mobile, i) => (
-       
-          <Fade  key={i} bottom>
-          <div className="card card-compact w-80 mx-auto bg-base-100 shadow-xl rounded-md font-primary">
-              <figure>
-                <img
-                  className="h-52 w-full object-cover"
-                  src={mobile.images[0] && mobile.images[0]}
-                  alt="moible"
-                />
-              </figure>
-              <Link to={`/category/${mobile?.subcategory}/${mobile._id}`} className="card-body">
-                <h2 className="card-title ">{mobile?.name}</h2>
-                <p> {mobile.description.length > 70 ? <>{mobile.description.slice(0,70)}</> : mobile.description}
-                 </p>
-                <div className="flex justify-between gap-5 items-center my-2">
-                  <div className="w-24 h-6 rounded-lg   bg-yellow-300 flex justify-center items-center">
-                    <p className="text-center text-sm flex items-center">
-                      <CgDollar className="w-4 h-4" /> Price: ${mobile?.price}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="flex items-center gap-1">
-                      <TiLocation className="w-6 h-6" />
-                      {mobile?.location}
-                    </p>
-                  </div>
-                  <p className="flex items-center gap-1">
-                    <FaCreativeCommonsBy className="w-5 h-5" />
-                    {mobile.condition}
-                  </p>
-                </div>
-                <div className="flex justify-start gap-5">
-                  <div>
-                    <div className="flex items-center gap-1">
-                      <RxAvatar className="w-5 h-5" />
-                      <p className="font-bold">{mobile.sellerName}</p>
-                    </div>
-                  </div>
-                  <div>
-                    <p className="flex items-center gap-1 font-bold">
-                      <BiTime className="w-5 h-5" />
-                      {mobile.usedYear} Years
-                    </p>
-                  </div>
-                </div>
-                <div className="card-actions justify-end">
-                  <button className=" w-24 h-8 rounded bg-[#379389] text-white  font-bold mt-4">
-                    <p>
-                      See Details
-                    </p>
-                  </button>
-                </div>
-              </Link>
-          </div>
-            </Fade>
-        ))}
+        {finalMob.map((mobile, i) => <MobileCards mobile={mobile} i ={i} key={i}/>)}
       </div>
     </div>
   );

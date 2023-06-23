@@ -64,9 +64,9 @@ const Banner = () => {
                   className="input-lg outline-none rounded-md w-full p-5 input-bordered max-w-md  shadow-md"
                 />
               </div>
-              <ul class="bg-white border border-gray-100 w-full mt-2">
                 {search &&
-                  finalMob.map((mobile) => (
+              <ul class="bg-white border border-gray-100 w-full mt-2">
+                  {finalMob.map((mobile) => (
                    <Link to={`/category/${mobile.subcategory}/${mobile._id}`}>
                     <li class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900">
                       <svg
@@ -87,6 +87,7 @@ const Banner = () => {
                   ))}
                 {finalMob.length == 0 && "No result found"}
               </ul>
+                  }
             </div>
           </div>
         </div>

@@ -57,7 +57,8 @@ export const router = createBrowserRouter([
                 loader: ({params})=> fetch(`http://localhost:7000/phone/${params.id}`,{
                     headers:{
                         autherization: `bearer ${localStorage.getItem("accessToken")}`
-                    }
+                    },
+                    
                 })
             }
         ]
