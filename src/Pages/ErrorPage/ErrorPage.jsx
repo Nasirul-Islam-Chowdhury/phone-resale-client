@@ -6,7 +6,6 @@ const ErrorPage = () => {
     const {user, logOut} = useContext(Auth)
   const navigate = useNavigate()
     const handleSignout = ()=>{
-      console.log("hj")
       logOut()
       .then(()=>{
         navigate('/')
@@ -37,6 +36,18 @@ const ErrorPage = () => {
       if (error.status === 401) {
         return <div className='flex justify-center items-center min-h-screen text-black '>
             <h1 className='text-4xl font-semibold'>You aren't authorized to see this</h1>
+            
+            <p>You Need to Signout and login back</p>
+            <button>Signout</button>
+            <div>
+            {btn}
+             
+            </div>
+            </div>;
+      }
+      if (error.status === 403) {
+        return <div className='flex justify-center items-center min-h-screen text-black '>
+            <h1 className='text-4xl font-semibold'>Forbidden acceess</h1>
             
             <p>You Need to Signout and login back</p>
             <button>Signout</button>

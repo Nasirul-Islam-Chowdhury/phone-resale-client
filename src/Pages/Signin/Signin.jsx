@@ -16,14 +16,14 @@ const Signin = () => {
   const {handleGooglesignin, resetPassword} = useContext(Auth);
   const [token] = useToken(loginUserEmail);
   if(token){
-    navigate('/');
+    navigate(from, {replace:true});
   }
   const googleSignin = ()=>{
     handleGooglesignin()
     .then(res=>{
+      console.log(res.user.email)
       toast("User Logged in Succesfully")
-      console.log(res.user)
-      setloginUserEmail(res.user.email)
+      return setloginUserEmail(res.user.email)
     })
     .catch(err=>console.log(err))
   }

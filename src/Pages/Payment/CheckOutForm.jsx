@@ -13,7 +13,8 @@ const CheckOutForm = ({order}) => {
     fetch("http://localhost:7000/create-payment-intent", {
       method: "POST",
       headers: {
-         "content-type": "application/json"
+         "content-type": "application/json",
+         autherization: `bearer ${localStorage.getItem("accessToken")}`
     },
       body: JSON.stringify({order}),
     })

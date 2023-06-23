@@ -53,8 +53,12 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/category/:categoryName/:id',
-                element: <PhoneDetails/>,
-                loader: ({params})=> fetch(`http://localhost:7000/phone/${params.id}`)
+                element: <PrivateRoute><PhoneDetails/></PrivateRoute>,
+                loader: ({params})=> fetch(`http://localhost:7000/phone/${params.id}`,{
+                    headers:{
+                        autherization: `bearer ${localStorage.getItem("accessToken")}`
+                    }
+                })
             }
         ]
     },
@@ -94,7 +98,11 @@ export const router = createBrowserRouter([
             {
                 path:'/dashboard/payment/:id',
                 element: <Payment/>,
-                loader: ({params})=>fetch(`http://localhost:7000/order/${params.id}`)
+                loader: ({params})=>fetch(`http://localhost:7000/order/${params.id}`,{
+                    headers:{
+                        autherization: `bearer ${localStorage.getItem("accessToken")}`
+                    }
+                })
             }
         ]
     }

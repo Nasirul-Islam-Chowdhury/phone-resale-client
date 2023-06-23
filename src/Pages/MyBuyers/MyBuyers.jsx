@@ -13,7 +13,11 @@ const MyBuyers = () => {
       queryFn: async () => {
         if (!user) return [];
         const res = await fetch(
-          `http://localhost:7000/myBuyers?email=${user?.email}`
+          `http://localhost:7000/myBuyers?email=${user?.email}`,{
+            headers:{
+              autherization: `bearer ${localStorage.getItem("accessToken")}`
+            }
+          }
         );
         const data = await res.json();
         setLoading(false);

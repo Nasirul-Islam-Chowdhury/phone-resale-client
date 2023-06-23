@@ -13,7 +13,11 @@ const MyProducts = () => {
     queryKey: ["myProducts", user?.email],
     queryFn: async () => {
       if (!user) return [];
-      const res = await fetch(`http://localhost:7000/myProducts?email=${user?.email}`);
+      const res = await fetch(`http://localhost:7000/myProducts?email=${user?.email}`,{
+        headers:{
+          autherization: `bearer ${localStorage.getItem("accessToken")}`
+        }
+      });
       const data = await res.json();
       setLoading(false);
       setMyProducts(data)
@@ -41,6 +45,9 @@ const MyProducts = () => {
   const handleAdvertise = (product)=>{
     fetch(`http://localhost:7000/advertise/${product._id}`,{
       method :"PUT",
+      headers:{
+        autherization: `bearer ${localStorage.getItem("accessToken")}`
+      }
      })
      .then(res=>res.json())
      .then(data=>{

@@ -1,21 +1,20 @@
 import React, { useContext, useState } from "react";
-import { Link, json } from "react-router-dom";
+import { Link, Navigate, json, useNavigate } from "react-router-dom";
 import { Auth } from "../../Contexts/AuthContext";
 import { toast } from "react-hot-toast";
 import Loading from '../../SharedComponents/Loading/Loading'
 const AddProducts = () => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const { user } = useContext(Auth);
   const [condition, setCondition] = useState("");
   const date = new Date();
   let day = date.getDate();
   let month = date.getMonth() + 1;
+  const navigate = useNavigate()
   let year = date.getFullYear();
   let PostDate = `${day}-${month}-${year}`;
   const imgHostKey = import.meta.env.VITE_imgbb_key;
-  if(loading){
-    return <Loading/>
-  }
+  
   const handleAdd = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -34,11 +33,11 @@ const AddProducts = () => {
     const photo = form.photo.files[0];
     const formData = new FormData();
     formData.append("image", photo);
-    if (previous_price < price || previous_price < price)
+    if (previous_price < price || previous_price == price)
       return toast.error(
-        "Previous price can not be bigger than/ qual to selling price"
+        "Resale price can not be bigger than/ qual to Previous price"
       );
-      setLoading(true)
+
     const url = `https://api.imgbb.com/1/upload?key=${imgHostKey}`;
     fetch(url, {
       method: "POST",
@@ -64,26 +63,31 @@ const AddProducts = () => {
             PostDate,
             images: [imgData.data.url],
           };
-          console.log(product);
           fetch("http://localhost:7000/addProduct", {
             method: "POST",
             headers: {
               "content-type": "application/json",
+              autherization: `bearer ${localStorage.getItem("accessToken")}`
             },
             body: JSON.stringify(product),
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
               if (data.acknowledged) {
                 form.reset();
                 setLoading(false)
-                return toast.success(`${name} added successfully`);
+                toast.success(`${name} added successfully`);
+                navigate('/dashboard/myProducts')
               }
-            });
+            }
+        
+            ); 
+          } 
         }
-      });
-      
+        );
+        if(loading){
+          return <Loading/>
+        }
   };
   return (
     <div className="flex flex-col items-center min-h-100vh my-10 pt-6 sm:justify-center sm:pt-0">

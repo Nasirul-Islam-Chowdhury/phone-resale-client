@@ -13,7 +13,11 @@ const Sellers = () => {
     queryKey: ["sellers", user?.email],
     queryFn: async () => {
       if (!user) return [];
-      const res = await fetch(`http://localhost:7000/sellers`);
+      const res = await fetch(`http://localhost:7000/sellers`,{
+        headers:{
+          autherization: `bearer ${localStorage.getItem("accessToken")}`
+        }
+      });
       const data = await res.json();
       setSellers(data)
       setLoading(false);

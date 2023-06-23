@@ -7,6 +7,7 @@ import OrdersRow from "./OrdersRow";
 const Myorders = () => {
   const [myOrders, setmyOrders] = useState([]);
   const { user } = useContext(Auth);
+  const [loading, setLoading] = useState(true)
   const { data: orders = [], isLoading } = useQuery({
     queryKey: ["orders", user?.email],
     queryFn: async () => {
@@ -17,12 +18,13 @@ const Myorders = () => {
         }
       } );
       const data = await res.json();
+      setLoading(false)
       setmyOrders(data);
 
       return data;
     },
   });
-  if ( isLoading) {
+  if ( loading) {
     return <Loading />;
   }
   return (
