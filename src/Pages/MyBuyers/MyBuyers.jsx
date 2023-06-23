@@ -13,7 +13,7 @@ const MyBuyers = () => {
       queryFn: async () => {
         if (!user) return [];
         const res = await fetch(
-          `http://localhost:7000/myBuyers?email=${user?.email}`,{
+          `https://phone-resale-server-nine.vercel.app/myBuyers?email=${user?.email}`,{
             headers:{
               autherization: `bearer ${localStorage.getItem("accessToken")}`
             }
@@ -30,7 +30,7 @@ const MyBuyers = () => {
       return <Loading />;
     }
     const handleDeleteBuyers = (id)=>{
-      fetch(`http://localhost:7000/seller/${id}`,{
+      fetch(`https://phone-resale-server-nine.vercel.app/seller/${id}`,{
         method :"DELETE",
         headers:{
           autherization: `bearer ${localStorage.getItem("accessToken")}`
@@ -41,7 +41,7 @@ const MyBuyers = () => {
         const finalbuyers = myBuyers.filter((buyer)=>buyer._id !== id)
         setMyBuyers(finalbuyers)
        toast.success(`Deleted Successfully`)
-       console.log(data)
+      
        })
     }
     return (

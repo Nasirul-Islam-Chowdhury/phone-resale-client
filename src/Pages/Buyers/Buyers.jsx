@@ -14,7 +14,7 @@ const Buyers = () => {
       queryKey: ["buyers", user?.email],
       queryFn: async () => {
         if (!user) return [];
-        const res = await fetch(`http://localhost:7000/buyers`,{
+        const res = await fetch(`https://phone-resale-server-nine.vercel.app/buyers`,{
           headers:{
             autherization: `bearer ${localStorage.getItem("accessToken")}`
           }
@@ -26,7 +26,7 @@ const Buyers = () => {
       },
     });
     const handleDeleteBuyers = (email)=>{
-      fetch(`http://localhost:7000/buyer/${email}`,{
+      fetch(`https://phone-resale-server-nine.vercel.app/buyer/${email}`,{
         method :"DELETE",
         headers:{
           autherization: `bearer ${localStorage.getItem("accessToken")}`
@@ -37,7 +37,7 @@ const Buyers = () => {
         const finalBuyers = buyers.filter((buyer)=>buyer.email !== email)
         setBuyers(finalBuyers)
        toast.success(`Deleted Successfully`)
-       console.log(data)
+  
        })
     }
     if (loading || isLoading) {

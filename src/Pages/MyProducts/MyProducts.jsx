@@ -13,7 +13,7 @@ const MyProducts = () => {
     queryKey: ["myProducts", user?.email],
     queryFn: async () => {
       if (!user) return [];
-      const res = await fetch(`http://localhost:7000/myProducts?email=${user?.email}`,{
+      const res = await fetch(`https://phone-resale-server-nine.vercel.app/myProducts?email=${user?.email}`,{
         headers:{
           autherization: `bearer ${localStorage.getItem("accessToken")}`
         }
@@ -28,7 +28,7 @@ const MyProducts = () => {
     return <Loading />;
   }
   const handleDeleteProducts = (id)=>{
-    fetch(`http://localhost:7000/myProduct/${id}`,{
+    fetch(`https://phone-resale-server-nine.vercel.app/myProduct/${id}`,{
       method :"DELETE",
       headers:{
         autherization: `bearer ${localStorage.getItem("accessToken")}`
@@ -39,11 +39,11 @@ const MyProducts = () => {
       const finalProducts = myProducts.filter((device)=>device._id !== id)
       setMyProducts(finalProducts)
      toast.success(`Deleted Successfully`)
-     console.log(data)
+  
      })
   }
   const handleAdvertise = (product)=>{
-    fetch(`http://localhost:7000/advertise/${product._id}`,{
+    fetch(`https://phone-resale-server-nine.vercel.app/advertise/${product._id}`,{
       method :"PUT",
       headers:{
         autherization: `bearer ${localStorage.getItem("accessToken")}`

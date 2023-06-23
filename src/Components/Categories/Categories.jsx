@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Categories = () => {
     const {data:categories=[], isLoading, refetch} = useQuery({
          queryKey: ['categories'],
-          queryFn: ()=> fetch(`http://localhost:7000/categories`).then(res=>res.json()) })
+          queryFn: ()=> fetch(`https://phone-resale-server-nine.vercel.app/categories`).then(res=>res.json()) })
 if(isLoading){
     return <Loading/>
 }

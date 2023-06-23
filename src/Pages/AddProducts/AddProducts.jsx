@@ -63,7 +63,7 @@ const AddProducts = () => {
             PostDate,
             images: [imgData.data.url],
           };
-          fetch("http://localhost:7000/addProduct", {
+          fetch("https://phone-resale-server-nine.vercel.app/addProduct", {
             method: "POST",
             headers: {
               "content-type": "application/json",

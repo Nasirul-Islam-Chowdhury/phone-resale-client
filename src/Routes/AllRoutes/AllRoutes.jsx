@@ -49,12 +49,12 @@ export const router = createBrowserRouter([
             {
                 path:'/category/:categoryName',
                 element: <PrivateRoute><CategoryDetails/></PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:7000/category/${params.categoryName}`)
+                loader: ({params})=> fetch(`https://phone-resale-server-nine.vercel.app/category/${params.categoryName}`)
             },
             {
                 path:'/category/:categoryName/:id',
                 element: <PrivateRoute><PhoneDetails/></PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:7000/phone/${params.id}`,{
+                loader: ({params})=> fetch(`https://phone-resale-server-nine.vercel.app/phone/${params.id}`,{
                     headers:{
                         autherization: `bearer ${localStorage.getItem("accessToken")}`
                     },
@@ -99,7 +99,7 @@ export const router = createBrowserRouter([
             {
                 path:'/dashboard/payment/:id',
                 element: <Payment/>,
-                loader: ({params})=>fetch(`http://localhost:7000/order/${params.id}`,{
+                loader: ({params})=>fetch(`https://phone-resale-server-nine.vercel.app/order/${params.id}`,{
                     headers:{
                         autherization: `bearer ${localStorage.getItem("accessToken")}`
                     }

@@ -13,7 +13,7 @@ const Sellers = () => {
     queryKey: ["sellers", user?.email],
     queryFn: async () => {
       if (!user) return [];
-      const res = await fetch(`http://localhost:7000/sellers`,{
+      const res = await fetch(`https://phone-resale-server-nine.vercel.app/sellers`,{
         headers:{
           autherization: `bearer ${localStorage.getItem("accessToken")}`
         }
@@ -26,7 +26,7 @@ const Sellers = () => {
   });
 
   const handleDeleteSeller = (email)=>{
-    fetch(`http://localhost:7000/seller/${email}`,{
+    fetch(`https://phone-resale-server-nine.vercel.app/seller/${email}`,{
       method :"DELETE",
       headers:{
         autherization: `bearer ${localStorage.getItem("accessToken")}`
@@ -42,7 +42,7 @@ const Sellers = () => {
   }
 
   const handleverify = (email)=>{
-    fetch(`http://localhost:7000/seller/${email}`,{
+    fetch(`https://phone-resale-server-nine.vercel.app/seller/${email}`,{
       method :"PUT",
       headers:{
         autherization: `bearer ${localStorage.getItem("accessToken")}`
@@ -51,7 +51,7 @@ const Sellers = () => {
      })
      .then(res=>res.json())
      .then(data=>{
-     console.log(data)
+ 
      })
   }
   if (loading || isLoading) {

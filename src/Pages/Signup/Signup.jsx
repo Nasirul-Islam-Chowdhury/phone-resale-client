@@ -24,7 +24,7 @@ const Signup = () => {
   const { createUser, handleUpdateProfile } = useContext(Auth);
   const saveuser = (email, name, check) => {
     const users = { email, name, role:check };
-    fetch("http://localhost:7000/users", {
+    fetch("https://phone-resale-server-nine.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -34,7 +34,7 @@ const Signup = () => {
       .then((res) => res.json())
       .then((data) => {
         setcreatedUserEmail(email);
-        console.log(data)
+     
       });
   };
   const googleSignin = () => {

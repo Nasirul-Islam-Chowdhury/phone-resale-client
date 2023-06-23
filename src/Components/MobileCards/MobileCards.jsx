@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const MobileCards = ({mobile, i}) => {
   const [isSerllerVerified, setIsSellerVerified] = useState(false);
   useEffect(()=>{
-    fetch(`http://localhost:7000/users/${mobile.sellerEmail}`)
+    fetch(`https://phone-resale-server-nine.vercel.app/users/${mobile.sellerEmail}`)
     .then(res=>res.json())
     .then(data=>{
       setIsSellerVerified(data.verified)

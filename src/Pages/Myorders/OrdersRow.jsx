@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const OrdersRow = ({ order, i, setmyOrders, myOrders }) => {
   const handleCancelOrder = (_id) => {
-   fetch(`http://localhost:7000/order/${_id}`,{
+   fetch(`https://phone-resale-server-nine.vercel.app/order/${_id}`,{
     method :"DELETE",
     headers:{
       autherization: `bearer ${localStorage.getItem("accessToken")}`

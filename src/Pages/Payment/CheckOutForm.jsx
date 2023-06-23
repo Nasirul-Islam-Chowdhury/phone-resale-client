@@ -10,7 +10,7 @@ const CheckOutForm = ({order}) => {
   const stripe = useStripe();
   const elements = useElements();
   useEffect(() => {
-    fetch("http://localhost:7000/create-payment-intent", {
+    fetch("https://phone-resale-server-nine.vercel.app/create-payment-intent", {
       method: "POST",
       headers: {
          "content-type": "application/json",
@@ -62,7 +62,7 @@ const CheckOutForm = ({order}) => {
       setCardError(confirmError.message);
       return;
     }
-    console.log(paymentIntent);
+ 
     if (paymentIntent.status === "succeeded") {
       const payment = {
         price: order.itemPrice,
@@ -70,7 +70,7 @@ const CheckOutForm = ({order}) => {
         orderId: order._id,
         name : order.name,
       };
-      fetch(`http://localhost:7000/payments`,
+      fetch(`https://phone-resale-server-nine.vercel.app/payments`,
         {
           method: "POST",
           headers: {
@@ -86,7 +86,7 @@ const CheckOutForm = ({order}) => {
             setSuccess(`Congrats! your payment completed`);
             setTransactionId(paymentIntent.id);
           }
-          console.log(data);
+      
         });
     }
     setProccessing(false);

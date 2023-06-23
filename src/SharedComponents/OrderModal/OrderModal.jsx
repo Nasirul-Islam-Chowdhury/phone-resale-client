@@ -19,7 +19,7 @@ const OrderModal = ({ data }) => {
       return toast.error("Please signin/signup first to continue")
     }
     const bookingItems = { itemName, itemPrice, email, name, number,sellerEmail, sellerName };
-    fetch('http://localhost:7000/orders',{
+    fetch('https://phone-resale-server-nine.vercel.app/orders',{
       method: "POST",
       headers:{
         "content-type":"application/json",

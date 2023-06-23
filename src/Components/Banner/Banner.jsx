@@ -9,7 +9,7 @@ const Banner = () => {
   const [mobiles, setMobiles] = useState([]);
   const [finalMob, setFinalMob] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:7000/mobiles")
+    fetch("https://phone-resale-server-nine.vercel.app/mobiles")
       .then((res) => res.json())
       .then((data) => {
         const finalData = data.filter((d) => d.status !== "sold");
