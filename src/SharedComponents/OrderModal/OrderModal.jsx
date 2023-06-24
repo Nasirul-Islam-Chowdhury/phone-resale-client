@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Auth } from "../../Contexts/AuthContext";
 import { toast } from "react-hot-toast";
 import {AiOutlineClose} from 'react-icons/ai'
 
-const OrderModal = ({ data }) => {
-  const { user, openModal } = useContext(Auth);
+const OrderModal = ({ data,setOpenModal }) => {
+  const { user} = useContext(Auth);
+
   const handleOrder = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,17 +16,22 @@ const OrderModal = ({ data }) => {
     const number = form.number.value;
     const sellerName = data.sellerName;
     const sellerEmail = data.sellerEmail;
+   
     if(!(user?.email)){
       return toast.error("Please signin/signup first to continue")
     }
+
+    if(!number.length){
+      toast.error("Number Not Found. you have to give your number and order again")
+      return
+     }
     const bookingItems = { itemName, itemPrice, email, name, number,sellerEmail, sellerName };
     fetch('https://phone-resale-server-nine.vercel.app/orders',{
       method: "POST",
       headers:{
         "content-type":"application/json",
-        headers:{
           autherization: `bearer ${localStorage.getItem("accessToken")}`
-        }
+       
       },
       body: JSON.stringify(bookingItems)
     })
@@ -39,7 +45,6 @@ const OrderModal = ({ data }) => {
   return (
   <>
     {
-   
        <div>
        <input type="checkbox" id="my-modal-6" className="modal-toggle" />
        <div className="modal modal-bottom sm:modal-middle">
@@ -49,6 +54,11 @@ const OrderModal = ({ data }) => {
              className="grid grid-cols-1 gap-3 mt-10 bg-white"
            >
             <div className="flex justify-end">
+            </div>
+            <div className="flex justify-end">
+              <button className="text-xl text-end" onClick={()=>setOpenModal(false)}>
+              <AiOutlineClose className="w-6 h-6"/>
+              </button>
             </div>
              <div>
                <p className="text-sm p-1">Product Name</p>
@@ -114,7 +124,7 @@ const OrderModal = ({ data }) => {
              <div>
                <p className="text-sm p-1">Number</p>
                <input
-               required
+        
                  name="number"
                  type="number"
                  placeholder="Phone number"

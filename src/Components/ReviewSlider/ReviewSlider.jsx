@@ -79,7 +79,7 @@ const ReviewSlider = () => {
         <Slider {...settings}>
          {
             reviews.map(review=> <div key={review.id}>
-              <div  className='bg-green-50 rounded-md w-96 h-96 flex flex-col justify-center items-center p-5 mx-auto'>
+              <div  className='bg-green-50 rounded-md w-full h-96 flex flex-col  justify-center items-center lg:p-5 p-8'>
               <img className='w-16 mx-auto mb-5' src={review.image} alt="" />
                 <p className='text-center font-primary lg:mx-0 mx-5'>{review.title}</p>
                 <div className='flex justify-center items-center gap-1 mt-4 mb-2'>

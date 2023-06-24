@@ -54,9 +54,9 @@ const Banner = () => {
           <p className="mt-10 mb-1 ">
             Let's get started. What are you buying today?
           </p>
-          <div class="">
-            <div class="inline-flex flex-col justify-center relative text-gray-500">
-              <div class="relative">
+          <div className="">
+            <div className="inline-flex flex-col justify-center relative text-gray-500">
+              <div className="relative">
                 <input
                   onChange={(e) => handleSearch(e.target.value)}
                   type="text"
@@ -65,12 +65,12 @@ const Banner = () => {
                 />
               </div>
                 {search &&
-              <ul class="bg-white border border-gray-100 w-full mt-2">
+              <ul className="bg-white border border-gray-100 w-full mt-2">
                   {finalMob.map((mobile) => (
                    <Link to={`/category/${mobile.subcategory}/${mobile._id}`}>
-                    <li class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900">
+                    <li className="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900">
                       <svg
-                        class="absolute w-4 h-4 left-2 top-2"
+                        className="absolute w-4 h-4 left-2 top-2"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"

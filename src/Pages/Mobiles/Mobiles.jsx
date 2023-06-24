@@ -24,7 +24,6 @@ const Mobiles = () => {
         setFinalMob(finalData);
       });
   }, []);
-
   const { data: categories = [] } = useQuery({
     queryKey: ["categories"],
     queryFn: () =>

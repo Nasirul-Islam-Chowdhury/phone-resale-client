@@ -52,6 +52,7 @@ const AuthContext = ({ children }) => {
   const resetPassword = (email) => {
     return sendPasswordResetEmail(auth, email);
   };
+
   const authInfo = {
     createUser,
     resetPassword,
@@ -61,7 +62,7 @@ const AuthContext = ({ children }) => {
     handleUpdateProfile,
     loader,
     handleGooglesignin,
-  
+
   };
 
   return (

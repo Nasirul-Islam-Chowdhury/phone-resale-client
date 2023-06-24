@@ -20,7 +20,8 @@ const MobileCards = ({mobile, i}) => {
     )
     .catch(error=>{
       setIsSellerVerified(false)
-      console.log(error)})
+    
+    })
   },[])
     return (
         <Fade bottom>

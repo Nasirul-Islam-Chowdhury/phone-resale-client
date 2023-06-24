@@ -10,7 +10,6 @@ const App = () => {
   return (
     <div>
        <Elements stripe={stripePromise}>
-  
       <RouterProvider router={router}></RouterProvider>
       <Toaster position="top-center"  />
           </Elements>

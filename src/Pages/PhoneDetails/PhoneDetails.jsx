@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import {  useLoaderData } from "react-router-dom";
 import OrderModal from "../../SharedComponents/OrderModal/OrderModal";
 import { TiLocation } from "react-icons/ti";
@@ -6,8 +6,10 @@ import { BiTime } from "react-icons/bi";
 import { CgArrowsExpandLeft, CgDollar } from "react-icons/cg";
 import { RxAvatar } from "react-icons/rx";
 import { MdVerified } from "react-icons/md";
+import { Auth } from "../../Contexts/AuthContext";
 
 const PhoneDetails = () => {
+  const [openModal, setOpenModal] = useState(true);
   const {phone,userDetail} = useLoaderData();
   return (
     <div className="container   text-black ">
@@ -20,7 +22,7 @@ const PhoneDetails = () => {
             <div className="w-full">
               <img
                 className="w-full lg:h-[600px] h-[300px] rounded-md object-cover"
-                src={phone.images[0]}
+                src={phone?.images[0]}
                 alt=""
               />
             </div>
@@ -64,11 +66,11 @@ const PhoneDetails = () => {
               </div>
             </div>
 
-            <div>
-              <label htmlFor="my-modal-6" className="btn my-4 px-10">
+            <div >
+              <label onClick={()=>setOpenModal(true)} htmlFor="my-modal-6" className="btn my-4 px-10">
                 Order Now
               </label>
-              <OrderModal data={phone} />
+           {openModal &&   <OrderModal data={phone} setOpenModal={setOpenModal} />}
             </div>
           </div>
         </div>
