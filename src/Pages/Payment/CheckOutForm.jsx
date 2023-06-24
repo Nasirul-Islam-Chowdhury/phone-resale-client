@@ -93,7 +93,7 @@ const CheckOutForm = ({order}) => {
   };
   return (
     <>
-      <form className="w-96 my-7" onSubmit={handleSubmit}>
+      <form className="lg:w-96 my-7" onSubmit={handleSubmit}>
         <CardElement
           options={{
             style: {

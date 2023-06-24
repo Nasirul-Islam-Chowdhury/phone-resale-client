@@ -7,7 +7,8 @@ const stripePromise = loadStripe(import.meta.env.VITE_stripe_key);
 const Payment = () => {
   const orderDetails = useLoaderData();
   return (
-    <div className="text-black m-6">
+    <div className="text-black ">
+      <div className="p-5">
       <h1 className="font-bold text-3xl font-primary ">Payment</h1>
       {orderDetails?.map((order) => (
         <div key={order._id}>
@@ -21,6 +22,7 @@ const Payment = () => {
           </div>
         </div>
       ))}
+      </div>
     </div>
   );
 };

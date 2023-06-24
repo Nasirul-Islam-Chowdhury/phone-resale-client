@@ -65,7 +65,7 @@ const Sellers = () => {
       <h1 className="text-black text-3xl font-primary font-bold mb-4">
         All sellers
       </h1>
-      <div className="overflow-x-auto text-black">
+      <div className="lg:w-full md:w-full  w-96 overflow-x-auto text-black">
         <table className="table">
           <thead>
             <tr className="text-black">

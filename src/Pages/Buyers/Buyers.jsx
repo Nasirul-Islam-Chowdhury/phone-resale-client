@@ -46,7 +46,7 @@ const Buyers = () => {
     return (
   <div className='p-5'>
         <h1 className="text-black text-3xl font-primary font-bold mb-4">All buyers</h1>
-          <div className="lg:overflow-x-auto overflow-x-scroll w-full   text-black ">
+          <div className="lg:w-full   w-96 overflow-x-auto text-black ">
         <table className="table">
     
           <thead>
