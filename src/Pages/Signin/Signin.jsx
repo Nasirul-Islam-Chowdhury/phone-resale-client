@@ -21,12 +21,27 @@ const Signin = () => {
   const googleSignin = ()=>{
     handleGooglesignin()
     .then(res=>{
-      console.log(res.user.email)
-      toast("User Logged in Succesfully")
-      return setloginUserEmail(res.user.email)
+      const name = res.user.displayName;
+      const email = res.user.email;
+      const users = {name, email}
+      fetch("https://phone-resale-server-nine.vercel.app/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(users),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setloginUserEmail(res.user.email);
+     
+        toast.success("User Logged in Succesfully")
+      });
+       
     })
     .catch(err=>console.log(err))
   }
+
 const handleResetPass = ()=>{
   if(userEmail){
     resetPassword(userEmail)
@@ -53,7 +68,8 @@ const handleResetPass = ()=>{
       toast.success("User Logged in successfully")
       setloginUserEmail(data.email)
       navigate(from, { replace : true})
-      console.log(result.user)})
+    
+    })
     .catch(error=>{
       setLoginError(error.message)
       console.log(error)})

@@ -28,11 +28,11 @@ const Myorders = () => {
     return <Loading />;
   }
   return (
-    <div className="p-5 w-full overflow-x-auto ">
-      <h1 className="text-black text-3xl font-primary font-bold mb-4">
+    <div className="lg:p-5  w-full">
+      <h1 className="text-black text-3xl font-primary font-bold mb-4 mx-2">
         My Orders
       </h1>
-      <div className="lg:w-full md:w-full  w-96 overflow-x-auto text-black ">
+      <div className="lg:w-full md:w-full w-screen overflow-x-scroll text-black ">
         <table className="table overflow-x-scroll">
           <thead>
             <tr className="text-black">

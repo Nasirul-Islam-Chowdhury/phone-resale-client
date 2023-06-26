@@ -61,11 +61,11 @@ const Sellers = () => {
 
 
   return (
-    <div className="p-5">
-      <h1 className="text-black text-3xl font-primary font-bold mb-4">
+    <div className="lg:p-5">
+      <h1 className="text-black text-3xl font-primary font-bold mb-4 mx-2">
         All sellers
       </h1>
-      <div className="lg:w-full md:w-full  w-96 overflow-x-auto text-black">
+      <div className="lg:w-full md:w-full  w-screen overflow-x-scroll text-black">
         <table className="table">
           <thead>
             <tr className="text-black">
