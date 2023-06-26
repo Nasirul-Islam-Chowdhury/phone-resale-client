@@ -21,6 +21,10 @@ you can pay for mobile with the stripe payment method
 - stripe js
 - JWT token
 
+Admin Email: nasir1@gmail.com
+Admin Password: 1212@@
+
+Live Site: https://phoneswapzone.web.app
 
 ## Authors
 
