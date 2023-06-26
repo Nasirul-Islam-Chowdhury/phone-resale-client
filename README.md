@@ -1,7 +1,7 @@
 # Phone resale client
 
-Its an react + vite dynamic fullstack project for resale mobile. it have an simple node express server. you can register and signin here. firebase authentication is enable here. it's an single page application made with react. you can add your own services and see details. Buyer can Order here and Seller can add products and delete. here's also an admiin role. admin can delete and verify sellers.
-you can pay for mobile with stripe payment method
+It's a react + vite dynamic full stack project for resale mobile. it has a simple node express server. you can register and sign in here. firebase authentication is enabled here. it's a single-page application made with React. you can add your own services and see details. Buyers can Order here and Sellers can add products and delete. here's also an admin role. admin can delete and verify sellers.
+you can pay for mobile with the stripe payment method
 
 
 ## Used Technologies and Features
@@ -9,9 +9,9 @@ you can pay for mobile with stripe payment method
 - React + Vite
 - simple express server
 - Firebase Authentication
-- Sign in with google
+- Sign in with Google
 - React Router Dom
-- database- MOngodb
+- database- MongoDB
 - Tailwind CSS
 - Daisyui
 - React reveal
@@ -19,6 +19,7 @@ you can pay for mobile with stripe payment method
 - Lottie React 
 - React slick 
 - stripe js
+- JWT token
 
 
 ## Authors

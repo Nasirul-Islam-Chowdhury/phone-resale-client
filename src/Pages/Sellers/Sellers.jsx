@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
 import { Auth } from "../../Contexts/AuthContext";
 import Loading from "../../SharedComponents/Loading/Loading";
-import OrdersRow from "../Myorders/OrdersRow";
 import { toast } from "react-hot-toast";
 
 const Sellers = () => {
