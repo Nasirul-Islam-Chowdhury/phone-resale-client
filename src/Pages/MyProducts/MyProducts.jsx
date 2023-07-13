@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { Auth } from "../../Contexts/AuthContext";
 import Loading from "../../SharedComponents/Loading/Loading";
 import { toast } from "react-hot-toast";
+import { CgArrowsExpandLeft } from "react-icons/cg";
 
 const MyProducts = () => {
   const [loading, setLoading] = useState(true);
@@ -43,6 +44,7 @@ const MyProducts = () => {
      })
   }
   const handleAdvertise = (product)=>{
+  if(product.role !== "advertised"){
     fetch(`https://phone-resale-server-nine.vercel.app/advertise/${product._id}`,{
       method :"PUT",
       headers:{
@@ -53,6 +55,7 @@ const MyProducts = () => {
      .then(data=>{
      toast.success(`Advertised Successfully`)
      })
+  }
   }
 
   return (

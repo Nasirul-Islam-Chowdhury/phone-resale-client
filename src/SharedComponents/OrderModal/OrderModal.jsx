@@ -67,7 +67,7 @@ const OrderModal = ({ data,setOpenModal }) => {
                  placeholder="product name"
                  type="text"
                  name="price"
-                 defaultValue={data.name}
+                 defaultValue={data?.name}
                  className="input input-bordered w-full text-black"
                />
              </div>
@@ -77,7 +77,7 @@ const OrderModal = ({ data,setOpenModal }) => {
                  readOnly
                  placeholder="product name"
                  type="text"
-                 defaultValue={`$${data.price}`}
+                 defaultValue={`$${data?.price}`}
                  className="input input-bordered w-full text-black"
                />
              </div>
@@ -107,13 +107,13 @@ const OrderModal = ({ data,setOpenModal }) => {
  
             
             {
-              data.location &&
+              data?.location &&
               <div>
               <p className="text-sm p-1">location</p>
               <input
               required
               readOnly
-              defaultValue={data.location}
+              defaultValue={data?.location}
                 name="location"
                 type="text"
                 placeholder="Your location"

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import PhonesCard from "../../Components/PhonesCard/PhonesCard";
-import OrderModal from "../../SharedComponents/OrderModal/OrderModal";
+
 
 const CategoryDetails = () => {
   const categoryDetails = useLoaderData();

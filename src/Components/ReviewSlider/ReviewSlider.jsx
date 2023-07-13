@@ -6,7 +6,7 @@ import img from '../../assets/testimonial.png'
 import { FaStar } from 'react-icons/fa';
 const ReviewSlider = () => {
   var settings = {
-    dots: true,
+
     infinite: false,
     speed: 500,
     slidesToShow: 3,
@@ -78,8 +78,10 @@ const ReviewSlider = () => {
             <div >
         <Slider {...settings}>
          {
-            reviews.map(review=> <div key={review.id}>
-              <div  className='bg-green-50 rounded-md w-full h-96 flex flex-col  justify-center items-center lg:p-5 p-8'>
+            reviews.map(review=> 
+            <div key={review.id} className=''>
+            <div className='lg:mx-5 rounded-md shadow-xl hover:shadow-none border lg:py-0 py-10'>
+                <div  className=' w-full h-96  flex flex-col justify-center items-center lg:p-5 '>
               <img className='w-16 mx-auto mb-5' src={review.image} alt="" />
                 <p className='text-center font-primary lg:mx-0 mx-5'>{review.title}</p>
                 <div className='flex justify-center items-center gap-1 mt-4 mb-2'>
@@ -91,6 +93,7 @@ const ReviewSlider = () => {
                 </div>
                 <p className='text-xl font-semibold text-center font-primary'>{review.name}</p>
               </div>
+            </div>
             </div>
             )
          }

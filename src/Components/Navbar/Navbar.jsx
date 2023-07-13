@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Auth } from "../../Contexts/AuthContext";
-
 const Navbar = () => {
+
   const {user, logOut} = useContext(Auth)
 const handleSignout = ()=>{
   logOut()
@@ -11,11 +11,11 @@ const handleSignout = ()=>{
 }
   const menuItems = (
     <>
-       <li><Link  to='/'>Home</Link></li>
-       <li><Link  to='/mobiles'>Mobiles</Link></li>
-       <li><Link  to='/dashboard'>Dashboard</Link></li>
-       <li><Link  to='/blog'>Blog</Link></li>
-      {!user && <li><Link  to='/signup'>Signup</Link></li>}
+       <li><NavLink  to='/'>Home</NavLink></li>
+       <li><NavLink  to='/mobiles'>Mobiles</NavLink></li>
+       <li><NavLink  to='/dashboard'>Dashboard</NavLink></li>
+       <li><NavLink  to='/blog'>Blog</NavLink></li>
+      {!user && <li><NavLink  to='/signup'>Signup</NavLink></li>}
     </>
   );
   return (
@@ -41,15 +41,15 @@ const handleSignout = ()=>{
             </label>
             <ul
               tabIndex={0}
-              className="menu dropdown-content mt-3 p-2 shadow  rounded-box w-52 bg-[#379389] z-50  font-semibold"
+              className=" flex justify-center flex-col gap-5 py-4 px-5 dropdown-content  mt-3 p-2 shadow  rounded-box w-52 bg-[#379389] z-50  font-semibold"
             >
               {menuItems}
             </ul>
           </div>
           <Link to='/' className="font-primary font-bold normal-case lg:text-2xl text-xl">PhoneSwapZone</Link>
         </div>
-        <div className="navbar-center  hidden lg:flex ">
-          <ul className="menu menu-horizontal px-1  font-semibold">{menuItems}</ul>
+        <div className="navbar-center  hidden lg:flex text-white ">
+          <ul className="flex justify-center gap-10 px-1  font-semibold">{menuItems}</ul>
         </div>
         <div className="navbar-end">
           {

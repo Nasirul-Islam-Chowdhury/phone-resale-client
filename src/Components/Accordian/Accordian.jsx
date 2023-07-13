@@ -2,7 +2,7 @@ import React from 'react';
 
 const Accordian = () => {
     return (
-        <div className='container text-black font-primary font-semibold'>
+        <div className='container text-black font-primary font-semibold my-32'>
             <div className="collapse collapse-plus bg-slate-100 mb-4">
   <input type="radio" name="my-accordion-3" checked="checked" /> 
   <div className="collapse-title text-xl font-medium">

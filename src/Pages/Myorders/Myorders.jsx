@@ -32,7 +32,7 @@ const Myorders = () => {
       <h1 className="text-black text-3xl font-primary font-bold mb-4 mx-2">
         My Orders
       </h1>
-      <div className="lg:w-full md:w-full w-screen overflow-x-scroll text-black ">
+      <div className="lg:w-full md:w-full w-screen lg:overflow-x-auto overflow-x-scroll text-black ">
         <table className="table overflow-x-scroll">
           <thead>
             <tr className="text-black">

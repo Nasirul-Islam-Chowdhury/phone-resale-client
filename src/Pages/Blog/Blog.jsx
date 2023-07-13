@@ -1,133 +1,42 @@
 import React from "react";
 
 const Blog = () => {
-  return (
-    <div className="text-black font-primary container my-10">
-      <div>
-        <h1 className="text-2xl font-semibold">
-          What are the different ways to manage state in a React application?
-        </h1>
-        <p className="mt-4">
-          <span className="font-bold">1. Local component state: </span> React
-          components have their own local state, which can be managed using the
-          useState hook. You can define a state variable and update its value
-          using the provided setter function. This approach is suitable for
-          managing state that is confined to a specific component and does not
-          need to be shared with other components.
-          <br />
-          <span className="font-bold">2. Context API:</span> React's Context API
-          allows you to create a global state that can be accessed by multiple
-          components in the component tree. It provides a way to pass data down
-          the component tree without having to pass props explicitly at every
-          level. You can use the createContext function to define a context, and
-          then use the Provider component to wrap the relevant components and
-          provide the state. Components that need access to the state can use
-          the useContext hook to consume the context.
-          <br />
-          <span className="font-bold">3. Redux:</span> Redux is a popular state
-          management library that provides a predictable state container for
-          JavaScript applications, including React. Redux stores the application
-          state in a single centralized store, and components can subscribe to
-          parts of the store's state using the connect function or the
-          useSelector hook. Actions are dispatched to modify the state, and
-          reducers handle these actions to update the state. Redux is suitable
-          for managing complex state that needs to be shared across many
-          components.
-          <br />
-          <span className="font-bold">4. MobX:</span> MobX is another state
-          management library that allows you to create observable state and
-          automatically tracks dependencies between state and UI. It uses
-          observable objects and reactive functions to manage state. With MobX,
-          you can define observables, computed values, and actions to modify the
-          state. Components can observe the relevant parts of the state and
-          automatically re-render when the observed state changes.
-        </p>
-      </div>
-      <div className="my-6">
-        <h1 className="text-2xl font-semibold">
-          How does prototypical inheritance work?
-        </h1>
-        <p className="mt-4">
-          In JavaScript, prototypical inheritance is the mechanism by which
-          objects inherit properties and methods from their parent objects.
-          Every object in JavaScript has an internal property called
-          [[Prototype]], which can be accessed via the __proto__ property
-          (though it's recommended to use Object.getPrototypeOf instead). When a
-          property or method is accessed on an object, JavaScript looks for it
-          in the object itself. If it's not found, it looks up the prototype
-          chain by accessing the [[Prototype]] of the object until it finds the
-          property or reaches the end of the chain.
-        </p>
-        <br />
-        <p>
-          When you access a property or method on an object, JavaScript first
-          checks if the property exists on the object itself. If it doesn't, it
-          continues the search in the object's prototype (its parent). This
-          process continues until the property is found or until the end of the
-          prototype chain is reached (which is usually the Object.prototype).
-        </p>
-        <br />
-        <p>
-          This inheritance mechanism allows objects to inherit properties and
-          methods from their prototypes, enabling code reuse and object-oriented
-          programming patterns in JavaScript.
-        </p>
-      </div>
-      <div>
-        <h1 className="text-2xl font-semibold">
-          {" "}
-          What is a unit test? Why should we write unit tests?
-        </h1>
-        <p className="mt-4">
-          A unit test is a type of software testing where individual units of
-          code, such as functions, classes, or components, are tested in
-          isolation to ensure they behave as expected. The goal of unit testing
-          is to verify the correctness of the individual units of code,
-          independently from the rest of the system.
-        </p>
-        <br />
-        <p>Unit tests are important for several reasons:</p>
-        <br />
-        <ul>
-            <li>
-                <span className="font-semibold">Detecting bugs early: </span>
-                <span>Unit tests can catch bugs and issues at an early stage, allowing developers to fix them before they propagate into more complex parts of the system.</span>
-            </li>
-            <li className="mt-3">
-                <span className="font-semibold">Facilitating refactoring:  </span>
-                <span>Unit tests act as a safety net when making changes to the codebase. They provide confidence that existing functionality remains intact after refactoring or making modifications.</span>
-            </li>
-            <li className="mt-3">
-                <span className="font-semibold">Improving code quality: </span>
-                <span>Writing unit tests often leads to writing more modular, loosely coupled, and testable code. It encourages good coding practices and can help identify design flaws.</span>
-            </li>
-           
-        </ul>
-      </div>
-      <div className="my-6">
-        <h1 className="font-semibold text-2xl">React vs. Angular vs. Vue?</h1>
-        <p className="mt-4">
-        React, Angular, and Vue are three popular JavaScript frameworks for building web applications. Here's a brief comparison:
-        </p>
-        <ul className="mt-4">
-            <li>
-                <span className="font-semibold">React </span>
-                <span> React is a JavaScript library, not a full-fledged framework. It focuses primarily on the view layer of an application. React uses a component-based architecture, where UIs are built by composing reusable components. React relies on a virtual DOM for efficient rendering and provides a declarative syntax for defining UI components. React is known for its simplicity, performance, and vibrant ecosystem.</span>
-            </li>
-            <li className="mt-3">
-                <span className="font-semibold">Angular  </span>
-                <span>Angular is a comprehensive JavaScript framework developed by Google. It offers a complete solution for building web applications, including a full-fledged framework, powerful tools, and extensive features. Angular uses a component-based architecture and employs TypeScript as its primary language. It provides features like two-way data binding, dependency injection, and a powerful CLI for scaffolding and building projects. Angular is suitable for large-scale enterprise applications.</span>
-            </li>
-            <li className="mt-3">
-                <span className="font-semibold">Vue </span>
-                <span>Vue is a progressive JavaScript framework designed for building user interfaces. It aims to be approachable and flexible, allowing developers to adopt it gradually within existing projects. Vue uses a component-based architecture similar to React and Angular. It provides features like reactive data binding, a template syntax, and a powerful CLI. Vue is known for its simplicity, ease of learning, and smooth integration with existing projects.
+  const articles = [
+    {
+      title: 'How to Choose the Right Mobile Device',
+      description: "The physical ruggedness of any device is of critical importance, especially when deployed in harsh industrial environments, such as the warehouse or on the manufacturing floor. The devices must be able to withstand countless drops, accidental spills, extreme temperatures, and dust or dirt. In a hospital, devices need to be made of special plastic that can prevent spread of bacteria and withstand chemical-based disinfectant wipe-downs In addition businesses need to consider how the users will use the device and predict the challenges they might have. For example, if a worker is wearing gloves when handling a mobile computer or need to carry goods with both hands all the time, voice-enabled applications will be helpful and facilitative for the task at hand. In a hospital setting, devices with quieter and less obstructive feedback modes would be ideal so no patients will be disturbed when the nurses operate the devices",
+      img: 'https://digitogy.com/wp-content/uploads/2019/01/mobile-phones.jpeg',
 
-</span>
-            </li>
-           
-        </ul>
-      </div>
+    },
+    {
+      title: 'Comparing Mobile Device Models: A Comprehensive Guide',
+      description: 'Phone-sized is a visual phone size comparison tool. Although its called phone-sized, we do list also tablets in our database as well. The intention is to enable users to view how different device differ in size compared to other mobile devices. You can also use this smartphone comparison tool to see the real size of your device. There is an option to add a credit card image which you can enlarge to match your credit card, which they will resize the other images so they will be presented in their real-life size.I ve created two main comparison modes: side-by-side and stacked. In the side by side view mode, as its name suggests, you can view the mobile devices side by side and observe their size difference. With the stacked comparison mode, you can see the device stacked one on top of the other. I ve also created an option to view the device only in its outline looks, so its easier to compare the devices when they are stacked up.We have an extensive list of mobile devices, including those from the following companies among others: Apple, Samsung, HTC, Huawei, Asus, Amazon, Acer, Microsoft, LG, Meizu, Xiaomi, Vodafone, ZTE, Sony, Nokia, OnePlus, Oppo, Samsung and many others.I am updating the website on a regular basis by adding newly announced devices to the database. If you find a device that isnt listed and you want me to add it, just contact me on Twitter and I will do my best to add it as soon as possible.The latest feature Ive added, allows you to see the dimension difference in mm, inches and percentage. The select buttons are located below each mobile device. You can only compare two devices. Once you choose the second smartphone or tablet, youll see the textual comparison information above the mobile device images. Click the select button again to deselect it and select another one instead. The comparison is done relative to the second device. For example, youll see if the first device is larger, smaller, thinner, thicker, narrower or taller than the second device you are comparing it to. Alternatively, you can first select the second device and the first one to have the reverse comparison with the second device is dimensions expressed in relation to the first one. More features to come, stay tuned.When you add more than one mobile phone or tablet, a share link will appear, allowing you to obtain a short URL, so you can easily share that specific comparison you are currently viewing on Facebook, Twitter, LinkedIn, QZone, Weibo, Reddit, etc.',
+      img: 'https://thumbs.dreamstime.com/b/modern-smartphones-touchscreen-interface-mobility-telecommunication-technology-concept-group-color-mobile-phones-33718710.jpg',
+    },
+    {
+      title: 'Troubleshooting Common Mobile Device Issues',
+      description: 'One of the common mobile phone problems people still face to date is low storage space. It doesnt matter if youve got a phone with 128GB of storage or more; your phone would certainly run out of capacity after storing a whole lot of things on it. Well, the solution is that you almost don’t have to store anything on your phone, talk less of filling up the storage, in today’s era. Even if all you have is 32GB of storage or less, you can live happily without worrying about the messy “Storage space running out” notifications.First, wed recommend you scan your device with the Files by Google app from the Play Store. The app tells you everything taking up your phone storage and help you get rid of them comfortably.Additionally, you should delete every app, video, and other files you don’t need on your device.Continue by backing up your photos (and videos) to the cloud with Google Photos. Doing so allows you to delete the heavy local files to reduce storage usage. Not just that, your photos (and videos) remains in the cloud forever and syncs across all your devices that have your Google account signed into.',
+      img: 'https://public.carlcare.com/public/7b527877657f0ee1103dbce9a9a60bc4.jpg',
+    }
+  ];
+
+  return (
+
+<section className=" text-black py-8 ">
+<div className="container mx-auto px-4 lg:w-3/5 font-primary">
+ 
+  <div className="flex flex-col gap-4">
+    {articles.map((article, index) => (
+    <div>
+     <img className="w-[600px] h-96 mx-auto rounded my-6" src={article.img} alt="" />
+       <h1 className="lg:text-3xl text-lg font-bold mb-3">{article.title}?</h1>
+     <p>{article.description}</p>
     </div>
+    ))}
+  </div>
+</div>
+</section>
+
   );
 };
 

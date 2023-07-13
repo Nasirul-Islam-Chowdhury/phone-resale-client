@@ -5,6 +5,7 @@ import AdvertisedItems from "../../Components/AdvertisedItems/AdvertisedItems";
 import ReviewSlider from "../../Components/ReviewSlider/ReviewSlider";
 import WhyUs from "../../Components/WhyUs/WhyUs";
 import Accordian from "../../Components/Accordian/Accordian";
+import Sponsors from "../../Components/sponsors/Sponsors";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <AdvertisedItems />
       <ReviewSlider />
       <WhyUs />
+      <Sponsors/>
       <Accordian />
     </div>
   );
