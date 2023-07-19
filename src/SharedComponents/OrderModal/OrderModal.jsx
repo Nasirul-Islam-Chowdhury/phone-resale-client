@@ -37,7 +37,7 @@ const OrderModal = ({ data,setOpenModal }) => {
     })
     .then(res=>res.json())
     .then(data=>{
-      console.log(data)
+  
       toast.success(`${itemName} Ordered successfully`)
     })
 

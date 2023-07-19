@@ -8,7 +8,7 @@ const CategoryDetails = () => {
   return (
  
     <div className="container grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 py-10">
-      {categoryDetails.map((details) => (
+      {categoryDetails?.map((details) => (
         <PhonesCard key={details._id} card={details} />
       ))}
     </div>

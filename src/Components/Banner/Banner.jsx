@@ -3,6 +3,10 @@ import animation from "../../../public/new.json";
 import Lottie from "lottie-react";
 import { TypeAnimation } from "react-type-animation";
 import { Link } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
 const Banner = () => {
   const [search, setSearch] = useState(false);
@@ -30,8 +34,8 @@ const Banner = () => {
   };
   return (
     <>
-      <div className="text-black container lg:flex justify-between items-center font-primary my-10">
-        <div className="lg:w-3/6">
+      <div  className="text-black container lg:flex justify-between items-center font-primary my-10">
+        <div className="lg:w-3/6" data-aos="fade-right">
           <h1 className=" lg:text-5xl text-3xl font-semibold lg:leading-tight leading-relaxed">
             Grab the best deal on your old smartphone!
           </h1>
@@ -91,7 +95,7 @@ const Banner = () => {
             </div>
           </div>
         </div>
-        <div className="lg:w-3/6">
+        <div data-aos="fade-left" className="lg:w-3/6">
           <Lottie animationData={animation} loop={true} />
         </div>
       </div>

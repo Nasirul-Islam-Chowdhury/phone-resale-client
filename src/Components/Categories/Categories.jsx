@@ -2,10 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import Loading from "../../SharedComponents/Loading/Loading";
 import { Link } from "react-router-dom";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+AOS.init();
 const Categories = () => {
   const [loading, setLoading] = useState(true)
   const [categories, setCategories] = useState([]);
+  
   useEffect(()=>{
     fetch("https://phone-resale-server-nine.vercel.app/categories")
     .then(res=>res.json())
@@ -23,7 +26,7 @@ const Categories = () => {
   return (
     <div className="container text-black font-primary my-20">
       {categories && (
-        <div>
+        <div data-aos="fade-right">
           <h2 className="text-3xl font-semibold lg:text-start  text-center">
             Browse Categories
           </h2>

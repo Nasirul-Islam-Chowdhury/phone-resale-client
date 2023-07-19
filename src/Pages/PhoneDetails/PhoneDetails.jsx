@@ -15,7 +15,7 @@ const PhoneDetails = () => {
     <div className="container   text-black ">
    
         <div
-          key={phone?._id}
+          key={phone._id}
           className="bg-[#eeeef0] lg:flex rounded-md items-start  my-10 gap-10 lg:p-10 shadow-lg font-primary"
         >
           <div className="lg:w-1/2">
@@ -28,8 +28,8 @@ const PhoneDetails = () => {
             </div>
           </div>
           <div className="lg:w-1/2 lg:p-0 p-5">
-            <h2 className="card-title text-2xl">{phone?.name}</h2>
-            <p className="my-2">{phone?.description}</p>
+            <h2 className="card-title text-2xl">{phone.name}</h2>
+            <p className="my-2">{phone.description}</p>
             <h2 className="card-title text-2xl mb-2 mt-4">Features:</h2>
             <div className="grid grid-cols-2 gap-1 lg:w-2/3 mb-4">
               <h2>Condition: {phone?.condition}</h2>

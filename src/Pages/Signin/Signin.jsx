@@ -18,29 +18,29 @@ const Signin = () => {
   if(token){
     navigate(from, {replace:true});
   }
-  const googleSignin = ()=>{
-    handleGooglesignin()
-    .then(res=>{
-      const name = res.user.displayName;
-      const email = res.user.email;
-      const users = {name, email}
-      fetch("https://phone-resale-server-nine.vercel.app/users", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(users),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setloginUserEmail(res.user.email);
+  // const googleSignin = ()=>{
+  //   handleGooglesignin()
+  //   .then(res=>{
+  //     const name = res.user.displayName;
+  //     const email = res.user.email;
+  //     const users = {name, email}
+  //     fetch("https://phone-resale-server-nine.vercel.app/users", {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(users),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setloginUserEmail(res.user.email);
      
-        toast.success("User Logged in Succesfully")
-      });
+  //       toast.success("User Logged in Succesfully")
+  //     });
        
-    })
-    .catch(err=>console.log(err))
-  }
+  //   })
+  //   .catch(err=>console.log(err))
+  // }
 
 const handleResetPass = ()=>{
   if(userEmail){
@@ -76,10 +76,10 @@ const handleResetPass = ()=>{
   };
  
   return (
-    <div className="h-[800px] flex justify-center items-center text-black">
+    <div className="h-[800px] flex flex-col justify-center items-center text-black">
+    
       <div className="w-96 p-5">
         <h2 className="text-4xl text-center mb-10">Signin</h2>
-
       <div>
         <form className="text-black" onSubmit={handleSubmit(handleLogin)}>
     
@@ -123,12 +123,26 @@ const handleResetPass = ()=>{
         </form>
         <p  className="text-center text-black mt-3">New to PhoneSwapZone? <Link to="/signup">signup</Link></p>
       </div>
-      <div className="divider text-black">OR</div>
-      <div>
+      {/* <div className="divider text-black">OR</div> */}
+      {/* <div>
         <button onClick={googleSignin} className="btn btn-outline btn-accent w-full">
           Continue with google
         </button>
+      </div> */}
       </div>
+      <div className="border w-80 p-5 font-primary my-6">
+       <h1 className="text-xl font-bold text-center font-primary border-b-2 mb-4">Demo Users</h1>
+        <h3>Buyer Email: <span className="font-semibold">a@gmail.com</span></h3>
+        <h3>Buyer Password: <span className="font-semibold">1212@@</span></h3>
+      
+       <div className="mt-4">
+       <h3>Seller Email: <span className="font-semibold">seller2@gmail.com</span></h3>
+        <h3>Seller Password: <span className="font-semibold">1212@@</span></h3>
+       </div>
+       <div className="mt-4">
+       <h3>Admin Email: <span className="font-semibold">nasir1@gmail.com</span></h3>
+        <h3>Seller Password: <span className="font-semibold">1212@@</span></h3>
+       </div>
       </div>
     </div>
   );

@@ -2,7 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import Loading from "../../SharedComponents/Loading/Loading";
 import { Link } from "react-router-dom";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+AOS.init();
 const AdvertisedItems = () => {
   const { data: products = [], isLoading } = useQuery({
     queryKey: ["advertise"],
@@ -16,12 +18,10 @@ const AdvertisedItems = () => {
     return <Loading />;
   }
   const finalPro = products.filter(p=> p.status !== "sold");
-
-
   return (
     <div>
       {finalPro.length>0 && (
-        <div className="container text-black font-primary">
+        <div data-aos="fade-right" className="container text-black font-primary">
           <h2 className="text-3xl font-semibold lg:p-4 my-8 lg:text-start text-center">Advertised Products</h2>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
             {finalPro.map((product) => (

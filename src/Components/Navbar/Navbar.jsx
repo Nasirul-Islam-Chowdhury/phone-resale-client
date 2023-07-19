@@ -15,6 +15,7 @@ const handleSignout = ()=>{
        <li><NavLink  to='/mobiles'>Mobiles</NavLink></li>
        <li><NavLink  to='/dashboard'>Dashboard</NavLink></li>
        <li><NavLink  to='/blog'>Blog</NavLink></li>
+      {!user && <li><NavLink  to='/signin'>Signin</NavLink></li>}
       {!user && <li><NavLink  to='/signup'>Signup</NavLink></li>}
     </>
   );

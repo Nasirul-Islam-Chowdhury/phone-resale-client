@@ -52,7 +52,7 @@ const Signup = () => {
     setSignupError(" ");
     createUser(data.email, data.password)
       .then((result) => {
-        console.log(result.user);
+      
         const userInfo = {
           displayName: data.name,
         };
@@ -65,7 +65,7 @@ const Signup = () => {
       })
       .catch((error) => {
         setSignupError(error.message);
-        console.log(error);
+      
       });
   };
 

@@ -8,7 +8,7 @@ const Sellers = () => {
   const [loading, setLoading] = useState(true);
   const { user } = useContext(Auth);
   const [sellers, setSellers] = useState([]);
-  const { data = [], isLoading } = useQuery({
+  const { data = [], isLoading, refetch } = useQuery({
     queryKey: ["sellers", user?.email],
     queryFn: async () => {
       if (!user) return [];
@@ -50,7 +50,9 @@ const Sellers = () => {
      })
      .then(res=>res.json())
      .then(data=>{
- 
+      toast.success(`Seller Verified Successfully`)
+
+ refetch()
      })
   }
   if (loading || isLoading) {
@@ -77,12 +79,14 @@ const Sellers = () => {
           </thead>
           <tbody>
             {sellers.map((seller, i) => (
+              
               <tr key={i}>
+               
                 <td>{i + 1}</td>
                 <td>{seller.name}</td>
                 <td>{seller.email}</td>
                 <td>
-                  <button onClick={()=>handleverify(seller.email)} className="btn btn-sm btn-success">Verify</button>
+                  <button disabled={seller?.verified} onClick={()=>handleverify(seller.email)} className="btn btn-sm btn-success disabled:btn-info disabled:bg-white disabled:text-black">{seller?.verified ?"Verified": "Verify"}</button>
                 </td>
                 <td>
                   <button onClick={()=>handleDeleteSeller(seller.email)} className="btn btn-sm btn-error">delete</button>

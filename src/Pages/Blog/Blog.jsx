@@ -1,5 +1,7 @@
 import React from "react";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+AOS.init();
 const Blog = () => {
   const articles = [
     {
@@ -22,8 +24,8 @@ const Blog = () => {
 
   return (
 
-<section className=" text-black py-8 ">
-<div className="container mx-auto px-4 lg:w-3/5 font-primary">
+<section data-aos="fade-right" className=" text-black py-8 mx-auto px-4 lg:w-3/6 bg-slate-100">
+<div className="container  font-primary ">
  
   <div className="flex flex-col gap-4">
     {articles.map((article, index) => (
