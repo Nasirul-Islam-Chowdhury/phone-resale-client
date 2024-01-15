@@ -9,10 +9,10 @@ import { loadStripe } from "@stripe/stripe-js";
 const App = () => {
   return (
     <div>
-       <Elements stripe={stripePromise}>
-      <RouterProvider router={router}></RouterProvider>
-      <Toaster position="top-center"  />
-          </Elements>
+      <Elements stripe={stripePromise}>
+        <RouterProvider router={router}></RouterProvider>
+        <Toaster position="top-center" />
+      </Elements>
     </div>
   );
 };

@@ -1,47 +1,106 @@
-import React from 'react';
+import React from "react";
+import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
-    return (
-<div className='bg-base-200 text-base-content mt-10'>
-<div className='container'>
-<footer className="footer p-10 pt-20">
-  <div>
-    <span className="footer-title">Services</span> 
-    <a className="link link-hover">Branding</a> 
-    <a className="link link-hover">Design</a> 
-    <a className="link link-hover">Marketing</a> 
-    <a className="link link-hover">Advertisement</a>
-  </div> 
-  <div>
-    <span className="footer-title">Company</span> 
-    <a className="link link-hover">About us</a> 
-    <a className="link link-hover">Contact</a> 
-    <a className="link link-hover">Jobs</a> 
-    <a className="link link-hover">Press kit</a>
-  </div> 
-  <div>
-    <span className="footer-title">Legal</span> 
-    <a className="link link-hover">Terms of use</a> 
-    <a className="link link-hover">Privacy policy</a> 
-    <a className="link link-hover">Cookie policy</a>
-  </div>
-</footer> 
-<footer className="footer px-10 pt-10 pb-20 border-t bg-base-200 text-base-content border-base-300">
-  <div className="items-center grid-flow-col">
-    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" className="fill-current"><path d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path></svg>
-    <p>PhoneSwapZone Ltd. <br/>Selling products with best price</p>
-  </div> 
-  <div className="md:place-self-center md:justify-self-end">
-    <div className="grid grid-flow-col gap-4">
-      <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg></a> 
-      <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path></svg></a>
-      <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></a>
+  return (
+    <div className="bg-[#2d857a] text-white pt-16 font-primary">
+      <footer className=" container">
+        <div className=" lg:flex lg:flex-row flex-col justify-center items-center ">
+          <div className="lg:w-1/2">
+            <div className="lg:w-4/5 lg:mx-auto">
+              <h1 className="text-3xl mb-4 font-bold">
+                PhoneSwapZone
+              </h1>
+              <p>
+              To sell a used phone safely, factory reset it to erase personal data, find a reputable platform or store, meet in a public place for the exchange, and accept secure payment methods like cash or a verified payment app.
+              </p>
+              <p className="mt-10">
+              With a massive collection of 4,571+ of Apple phones, users can easily get their desired device within their budget from Bikroy. From 5,000 to 1,00,000; Apple mobiles are listed here to choose from. Browse through your needs and find out the best deals quickly. You can use filter options "minimum" and "maximum" prices to explore the best prices for Apple mobile phones. Price varies based on the condition of the mobile phones.
+              </p>
+            </div>
+          </div>
+          <div className="lg:w-1/2">
+            <div className=" flex lg:justify-between md:justify-start items-start gap-5 lg:mt-0 mt-10 flex-wrap">
+              <div>
+                <h3 className="mb-10 text-lg"> Pages</h3>
+                <div className="flex flex-col items-start gap-8 text-sm text-[#DDDDDD]">
+                  <Link to={"/"}>Home</Link>
+                  <Link to={"/mobiles"}>Mobiles</Link>
+                  <Link to={"/dashboard"}>Dashboard</Link>
+                  <Link to={"/blog"}>Blog</Link>
+                  <Link to={"/signin"}>Signin</Link>
+                </div>
+              </div>
+              <div>
+                <h3 className="mb-10 text-lg">Links</h3>
+                <div className="flex flex-col items-start gap-8 text-sm text-[#DDDDDD]">
+                  <p>Privacy Policy</p>
+                  <p>How to verify</p>
+                  <p>Website Policy</p>
+                  <p>Selling Policy</p>
+                  <p>Buying Policy</p>
+
+                </div>
+              </div>
+              <div>
+                <h3 className="mb-10 text-lg"> Contact</h3>
+                <div className="flex flex-col items-start gap-8 text-sm text-[#DDDDDD]">
+                  <div className="flex gap-2">
+                    {/* <img className='size-6' src={callLogo} width={30} height={30} alt='logo' /> */}
+                    <p>+880 1644113296</p>
+                  </div>
+                  <div className="flex gap-2">
+                    {/* <img className='size-6' src={gmailLogo} width={30} height={30} alt='logo' /> */}
+                    <p>nasirchy252@gmail.com</p>
+                  </div>
+                  <div className="flex gap-2 ">
+                    {/* <img className='size-6' src={locationLogo} width={30} height={30} alt='logo' /> */}
+                    <p className="w-2/3">
+                     Khadimpara 3100
+                    </p>
+                  </div>
+                    <p className="w-2/3">
+                    Bangladesh Sylhet
+                    </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-end items-center gap-8 mt-4">
+          <Link to="">
+            {/* <img className='h-5 w-3' width={500} height={500} alt='facebook-logo' src={facebook}/> */}
+          </Link>
+          <Link to="">
+            {/* <img className='h-5 w-6' width={500} height={500} alt='twitter-logo' src={twitter}/> */}
+          </Link>
+          <Link to="">
+            {/* <img className='h-8 w-8' width={500} height={500} alt='linkedin-logo' src={linkedin}/> */}
+          </Link>
+          <Link to="">
+            {/* <img className='h-8 w-8' width={500} height={500} alt='instagram-logo' src={insta}/> */}
+          </Link>
+        </div>
+
+
+        <form onSubmit={(e)=>{
+          e.preventDefault();
+          toast.success("You have subscribed to phoneSwapZone")
+          }} className="flex lg:w-1/2 w-5/6 mx-auto my-10">
+        <input required type="gmail" placeholder="username@gmail.com" className="input border-gray-400 w-full rounded-e-none" /> 
+        <button  className="btn  bg-[#176158]  btn-outline  rounded-s-none">Subscribe</button>
+      </form> 
+
+
+        <div className="footer footer-center p-4  bg-[#176158] text-base-content">
+          <aside>
+            <p>Copyright © 2024 - All right reserved by Md Nasirul Islam Chowdhury</p>
+          </aside>
+        </div>
+      </footer>
     </div>
-  </div>
-</footer>
-</div>
-</div>
-    );
+  );
 };
 
 export default Footer;

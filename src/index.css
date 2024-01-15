@@ -9,5 +9,5 @@
     }
   }
   .active{
-    @apply border-b-2 text-white font-bold ;
+    @apply  font-bold;
 }

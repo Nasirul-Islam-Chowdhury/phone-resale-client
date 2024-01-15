@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import animation from "../../../public/new.json";
+import animation from "../../assets/banner-animation.json";
 import Lottie from "lottie-react";
 import { TypeAnimation } from "react-type-animation";
 import { Link } from "react-router-dom";
@@ -35,8 +35,8 @@ const Banner = () => {
   return (
     <>
       <div  className="text-black container lg:flex justify-between items-center font-primary my-10">
-        <div className="lg:w-3/6" data-aos="fade-right">
-          <h1 className=" lg:text-5xl text-3xl font-semibold lg:leading-tight leading-relaxed">
+        <div className="lg:w-7/12" data-aos="fade-right">
+          <h1 className=" lg:text-6xl text-3xl font-bold lg:leading-tight leading-relaxed">
             Grab the best deal on your old smartphone!
           </h1>
           <h1 className="font-bold text-4xl py-6 text-green-500">
@@ -95,8 +95,8 @@ const Banner = () => {
             </div>
           </div>
         </div>
-        <div data-aos="fade-left" className="lg:w-3/6">
-          <Lottie animationData={animation} loop={true} />
+        <div data-aos="fade-left" className="lg:w-5/12">
+          <Lottie className="lg:h-full h-96" animationData={animation} loop={true} />
         </div>
       </div>
     </>

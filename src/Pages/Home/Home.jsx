@@ -6,6 +6,8 @@ import ReviewSlider from "../../Components/ReviewSlider/ReviewSlider";
 import WhyUs from "../../Components/WhyUs/WhyUs";
 import Accordian from "../../Components/Accordian/Accordian";
 import Sponsors from "../../Components/sponsors/Sponsors";
+import Prepareyourself from "../../Components/Prepareyourself/Prepareyourself";
+import EasyPayment from "../../Components/EasyPayment/EasyPayment";
 
 const Home = () => {
   return (
@@ -15,8 +17,10 @@ const Home = () => {
       <AdvertisedItems />
       <ReviewSlider />
       <WhyUs />
+      <Prepareyourself/>
       <Sponsors/>
       <Accordian />
+      <EasyPayment/>
     </div>
   );
 };

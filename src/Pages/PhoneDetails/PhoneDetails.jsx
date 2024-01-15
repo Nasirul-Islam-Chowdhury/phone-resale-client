@@ -3,12 +3,14 @@ import {  useLoaderData } from "react-router-dom";
 import OrderModal from "../../SharedComponents/OrderModal/OrderModal";
 import { TiLocation } from "react-icons/ti";
 import { BiTime } from "react-icons/bi";
-import { CgArrowsExpandLeft, CgDollar } from "react-icons/cg";
+import {  CgDollar } from "react-icons/cg";
 import { RxAvatar } from "react-icons/rx";
 import { MdVerified } from "react-icons/md";
-import { Auth } from "../../Contexts/AuthContext";
+import  { Auth } from "../../Contexts/AuthContext";
 
 const PhoneDetails = () => {
+  const {user,role} = useContext(Auth);
+  console.log(user);
   const [openModal, setOpenModal] = useState(true);
   const {phone,userDetail} = useLoaderData();
   return (

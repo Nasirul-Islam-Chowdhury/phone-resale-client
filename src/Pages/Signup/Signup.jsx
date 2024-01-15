@@ -10,11 +10,11 @@ const Signup = () => {
   const { handleGooglesignin } = useContext(Auth);
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || '/'
+  const from = location.state?.from?.pathname || "/";
   const [createdUserEmail, setcreatedUserEmail] = useState("");
   const [token] = useToken(createdUserEmail);
-  if(token){
-    navigate(from, {replace: true})
+  if (token) {
+    navigate(from, { replace: true });
   }
   const {
     register,
@@ -23,7 +23,7 @@ const Signup = () => {
   } = useForm();
   const { createUser, handleUpdateProfile } = useContext(Auth);
   const saveuser = (email, name, check) => {
-    const users = { email, name, role:check };
+    const users = { email, name, role: check };
     fetch("https://phone-resale-server-nine.vercel.app/users", {
       method: "POST",
       headers: {
@@ -34,7 +34,6 @@ const Signup = () => {
       .then((res) => res.json())
       .then((data) => {
         setcreatedUserEmail(email);
-     
       });
   };
   const googleSignin = () => {
@@ -52,7 +51,6 @@ const Signup = () => {
     setSignupError(" ");
     createUser(data.email, data.password)
       .then((result) => {
-      
         const userInfo = {
           displayName: data.name,
         };
@@ -65,14 +63,13 @@ const Signup = () => {
       })
       .catch((error) => {
         setSignupError(error.message);
-      
       });
   };
 
   return (
     <div className="h-[800px] flex justify-center items-center text-black">
-      <div className="w-96 p-5">
-        <h2 className="text-4xl text-center mb-10">Signup</h2>
+      <div className="w-96 p-5 border-primary rounded-md border-2 font-primary">
+        <h2 className="text-4xl font-bold text-center mb-10">Signup</h2>
         <div className="text-black">
           <form onSubmit={handleSubmit(handleSignup)}>
             <div className="form-control w-full mb-2 ">
@@ -84,8 +81,8 @@ const Signup = () => {
                 {...register("name", { required: "name is required" })}
                 aria-invalid={errors.name ? "true" : "false"}
                 type="text"
-                placeholder="Type here"
-                className="input input-bordered w-full "
+                placeholder="Your Name"
+                className="input input-bordered w-full border-gray-300"
               />
             </div>
             {errors.name && (
@@ -103,8 +100,8 @@ const Signup = () => {
                 {...register("email", { required: "Email is required" })}
                 aria-invalid={errors.email ? "true" : "false"}
                 type="email"
-                placeholder="Type here"
-                className="input input-bordered w-full "
+                placeholder="Your Email"
+                className="input input-bordered w-full border-gray-300"
               />
             </div>
             {errors.email && (
@@ -133,7 +130,7 @@ const Signup = () => {
                 })}
                 type="password"
                 placeholder="Type password here"
-                className="input input-bordered w-full "
+                className="input input-bordered w-full border-gray-300"
               />
               {errors.password && (
                 <p className="text-red-600 text-sm mt-1" role="alert">
@@ -142,24 +139,41 @@ const Signup = () => {
               )}
             </div>
 
-<div>
-  <input type="radio" id="Seller" name="user" value="Seller" onChange={e=>setCheck(e.target.value)}/>  
-  <label className="mx-2 text-sm" htmlFor="Seller">I am a Seller </label><br />
-  <input  type="radio" id="Buyer" name="user" value="Buyer" onChange={e=>setCheck(e.target.value)}/>
-   <label className="text-sm mx-2" htmlFor="Buyer">I am a Buyer</label>
-</div>
+            <div>
+              <input
+                type="radio"
+                id="Seller"
+                name="user"
+                value="Seller"
+                onChange={(e) => setCheck(e.target.value)}
+              />
+              <label className="mx-2 text-sm" htmlFor="Seller">
+                I am a Seller{" "}
+              </label>
+              <br />
+              <input
+                type="radio"
+                id="Buyer"
+                name="user"
+                value="Buyer"
+                onChange={(e) => setCheck(e.target.value)}
+              />
+              <label className="text-sm mx-2" htmlFor="Buyer">
+                I am a Buyer
+              </label>
+            </div>
 
             <div>
               <p className="text-red-600 my-2">{signupError}</p>
             </div>
             <input
-              className="btn btn-neutral w-full"
+              className="btn btn-neutral text-primary border-primary w-full"
               type="submit"
               value={"Sign up"}
             />
           </form>
           <p className="text-center text-black mt-3">
-            New to PhoneSwapZone? <Link to="/signin">Signin</Link>
+            New to PhoneSwapZone? <Link className="font-bold text-primary" to="/signin">Signin</Link>
           </p>
         </div>
         <div className="divider text-black">OR</div>

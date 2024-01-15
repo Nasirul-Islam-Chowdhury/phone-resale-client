@@ -52,6 +52,7 @@ const Sponsors = () => {
       };
     return (
         <div className='container'>
+                 <h1 className='text-center lg:text-4xl text-2xl font-semibold font-primary mt-32 mb-6 p-3 rounded bg-slate-200 text-black'>Our Beloved Sponsors</h1>
               <Slider {...settings}>
          {
             sponsors.map((sponsor, id)=> 

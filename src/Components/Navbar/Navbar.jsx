@@ -11,12 +11,12 @@ const handleSignout = ()=>{
 }
   const menuItems = (
     <>
-       <li><NavLink  to='/'>Home</NavLink></li>
-       <li><NavLink  to='/mobiles'>Mobiles</NavLink></li>
-       <li><NavLink  to='/dashboard'>Dashboard</NavLink></li>
-       <li><NavLink  to='/blog'>Blog</NavLink></li>
-      {!user && <li><NavLink  to='/signin'>Signin</NavLink></li>}
-      {!user && <li><NavLink  to='/signup'>Signup</NavLink></li>}
+       <li><NavLink  className={"hover:text-gray-300 duration-500"} to='/'>Home</NavLink></li>
+       <li><NavLink  className={"hover:text-gray-300 duration-500"} to='/mobiles'>Mobiles</NavLink></li>
+       <li><NavLink  className={"hover:text-gray-300 duration-500"} to='/dashboard'>Dashboard</NavLink></li>
+       <li><NavLink  className={"hover:text-gray-300 duration-500"} to='/blog'>Blog</NavLink></li>
+      {!user && <li><NavLink  className={"hover:text-gray-300 duration-500"} to='/signin'>Signin</NavLink></li>}
+      {!user && <li><NavLink  className={"hover:text-gray-300 duration-500"} to='/signup'>Signup</NavLink></li>}
     </>
   );
   return (

@@ -12,6 +12,7 @@ import {
   GoogleAuthProvider,
   sendPasswordResetEmail,
 } from "firebase/auth";
+import Loading from "../SharedComponents/Loading/Loading";
 const auth = getAuth(app);
 
 export const Auth = createContext();
@@ -23,8 +24,7 @@ const AuthContext = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-
-
+  
 
   const loginUSer = (email, password) => {
     setLoader(true);
@@ -62,8 +62,8 @@ const AuthContext = ({ children }) => {
     handleUpdateProfile,
     loader,
     handleGooglesignin,
-
   };
+
 
   return (
     <div>

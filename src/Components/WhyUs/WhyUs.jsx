@@ -24,7 +24,7 @@ const WhyUs = () => {
         }
     ]
     return (
-        <div className='container text-black my-44'>
+        <div className='container text-black my-32'>
            <h1 className='text-4xl text-center font-bold font-primary'>Why You Should Buy From Us</h1>
           <div  className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 my-10'>
             {
