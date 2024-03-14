@@ -25,7 +25,7 @@ const MobileCards = ({mobile, i}) => {
   },[])
     return (
         <Fade bottom>
-        <div className="card card-compact w-80 mx-auto bg-base-100 shadow-xl rounded-md font-primary">
+        <div className="card card-compact w-80 mx-auto bg-white shadow-xl rounded-md font-primary">
             <figure>
               <img
                 className="h-52 w-full object-cover"

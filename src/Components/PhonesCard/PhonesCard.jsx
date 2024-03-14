@@ -25,7 +25,7 @@ const PhonesCard = ({ card }) => {
   } = card;
   return (
     <Fade bottom>
-          <div className="text-black card card-compact w-80 mx-auto bg-base-100 shadow-xl rounded-md font-primary ">
+      { card &&    <div className="text-black card card-compact w-80 mx-auto bg-white shadow-xl rounded-md font-primary ">
               <figure>
                 <img
                   className="h-52 w-full object-cover"
@@ -33,7 +33,7 @@ const PhonesCard = ({ card }) => {
                   alt="Shoes"
                 />
               </figure>
-              <Link to={`/category/${subcategory}/${_id}`} className="card-body">
+              <Link to={`/category/${subcategory}/${_id}`} className="card-body bg-white">
                 <h2 className="card-title ">{name}</h2>
                 <p>{description.slice(0, 70)}.....</p>
                 <div className="flex justify-between gap-5 items-center my-2">
@@ -75,7 +75,7 @@ const PhonesCard = ({ card }) => {
                   </button>
                 </div>
               </Link>
-          </div>
+          </div>}
             </Fade>
   );
 };

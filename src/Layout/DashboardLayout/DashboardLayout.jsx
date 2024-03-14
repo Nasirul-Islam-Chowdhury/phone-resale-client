@@ -19,7 +19,7 @@ const DashboardLayout = () => {
   const { user } = useContext(Auth);
   const [admin] = useAdmin(user?.email);
   const [seller] = useSeller(user?.email);
-  const location = useLocation();
+console.log(seller)
   return (
     <div className="bg-white">
       <NavBar />
@@ -59,7 +59,6 @@ const DashboardLayout = () => {
                 >
                   <BsTruck className="w-6 h-6" />
                   <h3 className="text-lg font-normal font-primary">
-                    {" "}
                     My orders
                   </h3>
                 </Link>

@@ -47,15 +47,12 @@ const Footer = () => {
                 <h3 className="mb-10 text-lg"> Contact</h3>
                 <div className="flex flex-col items-start gap-8 text-sm text-[#DDDDDD]">
                   <div className="flex gap-2">
-                    {/* <img className='size-6' src={callLogo} width={30} height={30} alt='logo' /> */}
                     <p>+880 1644113296</p>
                   </div>
                   <div className="flex gap-2">
-                    {/* <img className='size-6' src={gmailLogo} width={30} height={30} alt='logo' /> */}
                     <p>nasirchy252@gmail.com</p>
                   </div>
                   <div className="flex gap-2 ">
-                    {/* <img className='size-6' src={locationLogo} width={30} height={30} alt='logo' /> */}
                     <p className="w-2/3">
                      Khadimpara 3100
                     </p>
@@ -88,7 +85,7 @@ const Footer = () => {
           e.preventDefault();
           toast.success("You have subscribed to phoneSwapZone")
           }} className="flex lg:w-1/2 w-5/6 mx-auto my-10">
-        <input required type="gmail" placeholder="username@gmail.com" className="input border-gray-400 w-full rounded-e-none" /> 
+        <input required type="gmail" placeholder="username@gmail.com" className="input bg-white border-gray-400 w-full rounded-e-none" /> 
         <button  className="btn  bg-[#176158]  btn-outline  rounded-s-none">Subscribe</button>
       </form> 
 

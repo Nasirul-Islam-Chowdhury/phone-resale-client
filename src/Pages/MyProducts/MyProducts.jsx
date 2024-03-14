@@ -67,7 +67,7 @@ const MyProducts = () => {
          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                {/* row 1 */}
                {myProducts.map((order, i) => (
-             <div key={i} className="card w-96 bg-base-100 shadow-xl text-black">
+             <div key={i} className="card w-96 bg-white shadow-xl text-black">
              <figure><img className="w-96 h-72" src={order.images[0]} alt="Shoes" /></figure>
              <div className="card-body">
                <h2 className="card-title">{order.name}</h2>

@@ -6,17 +6,15 @@ import { BiTime } from "react-icons/bi";
 import {  CgDollar } from "react-icons/cg";
 import { RxAvatar } from "react-icons/rx";
 import { MdVerified } from "react-icons/md";
-import  { Auth } from "../../Contexts/AuthContext";
 
 const PhoneDetails = () => {
-  const {user,role} = useContext(Auth);
-  console.log(user);
   const [openModal, setOpenModal] = useState(true);
   const {phone,userDetail} = useLoaderData();
+
   return (
     <div className="container   text-black ">
    
-        <div
+     {phone &&   <div
           key={phone._id}
           className="bg-[#eeeef0] lg:flex rounded-md items-start  my-10 gap-10 lg:p-10 shadow-lg font-primary"
         >
@@ -75,7 +73,7 @@ const PhoneDetails = () => {
            {openModal &&   <OrderModal data={phone} setOpenModal={setOpenModal} />}
             </div>
           </div>
-        </div>
+        </div>}
       
     </div>
   );

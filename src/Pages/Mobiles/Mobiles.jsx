@@ -54,14 +54,14 @@ const Mobiles = () => {
     return <Loading />;
   }
   return (
-    <div className="container  text-black">
+    <div className="container   text-black">
       <div>
         <form className="mt-3">
           <div className="flex lg:flex-row flex-col-reverse gap-2 lg:items-center">
             <div className="lg:w-1/6 w-1/2">
               <select defaultValue={"All categories"}
                 onClick={(e) => handleFilter(e.target.value)}
-                className="select select-bordered w-full "
+                className="select select-bordered w-full bg-white"
               >
                 <option >All categories</option>
                 {categories.map((category) => (

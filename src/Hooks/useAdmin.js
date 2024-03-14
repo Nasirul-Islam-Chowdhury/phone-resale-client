@@ -14,7 +14,7 @@ const useAdmin = (email) => {
         .then(data=>{
             setAdmin(data.isAdmin)
             setisAdminLoding(false)
-            console.log(data)})
+        })
     }
     },[email])
     return [admin,isAdminloading]

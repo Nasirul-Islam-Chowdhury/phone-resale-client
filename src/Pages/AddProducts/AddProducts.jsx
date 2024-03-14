@@ -148,7 +148,7 @@ const AddProducts = () => {
                 required
                 name="description"
                 placeholder="Products Description"
-                className="textarea textarea-bordered h-36 w-full  outline-none"
+                className="textarea textarea-bordered bg-white h-36 w-full  outline-none"
               ></textarea>
             </div>
             <div className="mt-4 flex items-center gap-4">
@@ -245,7 +245,7 @@ const AddProducts = () => {
               <select
                 required
                 onChange={(e) => setCondition(e.target.value)}
-                className="select select-bordered w-full"
+                className="select select-bordered w-full bg-white"
               >
                
                 <option className="hidden" selected>What is your device condition?</option>
