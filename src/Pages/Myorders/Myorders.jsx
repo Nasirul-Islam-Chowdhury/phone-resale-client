@@ -7,6 +7,10 @@ import OrdersRow from "./OrdersRow";
 const Myorders = () => {
   const [myOrders, setmyOrders] = useState([]);
   const { user } = useContext(Auth);
+
+
+  console.log(user);
+
   const [loading, setLoading] = useState(true)
   const { data: orders = [], isLoading } = useQuery({
     queryKey: ["orders", user?.email],

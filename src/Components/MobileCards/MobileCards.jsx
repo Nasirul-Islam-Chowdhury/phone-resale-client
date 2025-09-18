@@ -25,7 +25,7 @@ const MobileCards = ({mobile, i}) => {
   },[])
     return (
         <Fade bottom>
-        <div className="card card-compact w-80 mx-auto bg-white shadow-xl rounded-md font-primary">
+        <div className="card card-compact max-w-[25rem] xl:max-w-[20rem] w-full mx-auto bg-white shadow-xl rounded-md font-primary">
             <figure>
               <img
                 className="h-52 w-full object-cover"
@@ -38,7 +38,7 @@ const MobileCards = ({mobile, i}) => {
               <p> {mobile.description.length > 70 ? <>{mobile.description.slice(0,70)}</> : mobile.description}
                </p>
               <div className="flex justify-between gap-5 items-center my-2">
-                <div className="w-24 h-6 rounded-lg   bg-yellow-300 flex justify-center items-center">
+                <div className="w-24 h-auto rounded-lg   bg-yellow-300 flex justify-center items-center">
                   <p className="text-center text-sm flex items-center">
                     <CgDollar className="w-4 h-4" /> Price: ${mobile?.price}
                   </p>

@@ -19,7 +19,7 @@ const DashboardLayout = () => {
   const { user } = useContext(Auth);
   const [admin] = useAdmin(user?.email);
   const [seller] = useSeller(user?.email);
-console.log(seller)
+
   return (
     <div className="bg-white">
       <NavBar />

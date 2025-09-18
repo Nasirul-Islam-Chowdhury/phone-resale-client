@@ -54,7 +54,7 @@ const Mobiles = () => {
     return <Loading />;
   }
   return (
-    <div className="container   text-black">
+    <div className="container  text-black">
       <div>
         <form className="mt-3">
           <div className="flex lg:flex-row flex-col-reverse gap-2 lg:items-center">
@@ -99,7 +99,7 @@ const Mobiles = () => {
           </div>
         </form>
       </div>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 my-10 gap-5 lg:px-20">
+      <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 my-10 gap-5 ">
         {finalMob.map((mobile, i) => <MobileCards mobile={mobile} i ={i} key={i}/>)}
       </div>
       <div>
