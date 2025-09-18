@@ -6,10 +6,24 @@ import { BiTime } from "react-icons/bi";
 import {  CgDollar } from "react-icons/cg";
 import { RxAvatar } from "react-icons/rx";
 import { MdVerified } from "react-icons/md";
+import { Auth } from "../../Contexts/AuthContext";
+import useSeller from "../../Hooks/useSeller";
+import useAdmin from "../../Hooks/useAdmin";
+import toast from "react-hot-toast";
 
 const PhoneDetails = () => {
-  const [openModal, setOpenModal] = useState(true);
+
+  const { user } = useContext(Auth);
+  const [openModal, setOpenModal] = useState(false);
   const {phone,userDetail} = useLoaderData();
+  const [admin] = useAdmin(user?.email);
+  const [seller] = useSeller(user?.email);
+
+const handleOrder = ()=>{
+  if(seller) return toast.error("You can't place order in seller mode");
+  if(admin) return toast.error("You can't place order in admin mode");
+  setOpenModal(true)
+}
 
   return (
     <div className="container   text-black ">
@@ -67,7 +81,7 @@ const PhoneDetails = () => {
             </div>
 
             <div >
-              <label onClick={()=>setOpenModal(true)} htmlFor="my-modal-6" className="btn my-4 px-10">
+              <label onClick={handleOrder} htmlFor="my-modal-6" className="btn my-4 px-10">
                 Order Now
               </label>
            {openModal &&   <OrderModal data={phone} setOpenModal={setOpenModal} />}

@@ -1,15 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { CgDollar } from "react-icons/cg";
 import Loading from "../../SharedComponents/Loading/Loading";
-import { TiLocation } from "react-icons/ti";
-import { FaCreativeCommonsBy } from "react-icons/fa";
-import { RxAvatar } from "react-icons/rx";
-import { BiTime } from "react-icons/bi";
-import Fade from "react-reveal/Fade";
 import MobileCards from "../../Components/MobileCards/MobileCards";
-
 const Mobiles = () => {
   const [mobiles, setMobiles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -74,7 +66,7 @@ const Mobiles = () => {
                 onChange={(e) => handleSerch(e.target.value)}
                 type="search"
                 id="search-dropdown"
-                className="block bg-slate-100 p-3 w-full z-20 text-sm text-gray-900  border-1 outline-none"
+                className="block bg-white p-3 w-full z-20 text-sm text-gray-900  border-1 outline-none"
                 placeholder="Search Apple, Oneplus, Pixel, Xiaomi, samsung ..."
                 required
               />
