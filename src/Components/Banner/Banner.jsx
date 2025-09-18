@@ -55,17 +55,17 @@ const Banner = () => {
               repeat={Infinity}
             />
           </h1>
-          <p className="mt-10 mb-1 ">
+          <p className="mt-10 mb-1 text-sm ml-1">
             Let's get started. What are you buying today?
           </p>
-          <div className="">
-            <div className="inline-flex flex-col justify-center relative text-gray-500">
+          <div className="w-full">
+            <div className="inline-flex flex-col justify-center relative text-gray-500 w-full">
               <div className="relative">
                 <input
                   onChange={(e) => handleSearch(e.target.value)}
                   type="text"
                   placeholder="Enter Device Name"
-                  className="input-lg outline-none rounded-md w-full p-5 input-bordered max-w-md  shadow-md"
+                  className="input-lg outline-none rounded-md w-full p-5 input-bordered max-w-md shadow-md"
                 />
               </div>
                 {search &&
