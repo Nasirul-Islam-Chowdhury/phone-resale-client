@@ -15,7 +15,7 @@ const Mobiles = () => {
   const [loading, setLoading] = useState(true);
   const [finalMob, setFinalMob] = useState([]);
   useEffect(() => {
-    fetch("https://phone-resale-server-nine.vercel.app/mobiles")
+    fetch("https://phone-resale-server.onrender.com/mobiles")
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);
@@ -27,7 +27,7 @@ const Mobiles = () => {
   const { data: categories = [] } = useQuery({
     queryKey: ["categories"],
     queryFn: () =>
-      fetch("https://phone-resale-server-nine.vercel.app/categories").then((res) => res.json()),
+      fetch("https://phone-resale-server.onrender.com/categories").then((res) => res.json()),
   });
 
   const handleFilter = (category) => {

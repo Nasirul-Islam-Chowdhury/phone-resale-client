@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "phoneswapzone"
+  },
+  "targets": {
+    "phoneswapzone": {
+      "hosting": {
+        "blog": [
+          "phoneswapzone"
+        ]
+      }
+    }
   }
 }

@@ -10,7 +10,7 @@ const Categories = () => {
   const [categories, setCategories] = useState([]);
   
   useEffect(()=>{
-    fetch("https://phone-resale-server-nine.vercel.app/categories")
+    fetch("https://phone-resale-server.onrender.com/categories")
     .then(res=>res.json())
     .then(data=>{
       setLoading(false)

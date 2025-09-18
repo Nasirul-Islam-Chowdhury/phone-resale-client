@@ -16,7 +16,7 @@ const Myorders = () => {
     queryKey: ["orders", user?.email],
     queryFn: async () => {
       if (!user) return [];
-      const res = await fetch(`https://phone-resale-server-nine.vercel.app/orders?email=${user?.email}` ,{
+      const res = await fetch(`https://phone-resale-server.onrender.com/orders?email=${user?.email}` ,{
         headers:{
           autherization: `bearer ${localStorage.getItem("accessToken")}`
         }

@@ -9,7 +9,7 @@ const AdvertisedItems = () => {
   const { data: products = [], isLoading } = useQuery({
     queryKey: ["advertise"],
     queryFn: () =>
-      fetch(`https://phone-resale-server-nine.vercel.app/advertise`)
+      fetch(`https://phone-resale-server.onrender.com/advertise`)
       .then((res) => res.json()),
 
   

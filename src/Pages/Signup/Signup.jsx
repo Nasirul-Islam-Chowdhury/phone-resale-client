@@ -24,7 +24,7 @@ const Signup = () => {
   const { createUser, handleUpdateProfile } = useContext(Auth);
   const saveuser = (email, name, check) => {
     const users = { email, name, role: check };
-    fetch("https://phone-resale-server-nine.vercel.app/users", {
+    fetch("https://phone-resale-server.onrender.com/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

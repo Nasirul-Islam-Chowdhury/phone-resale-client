@@ -13,7 +13,7 @@ const MyBuyers = () => {
       queryFn: async () => {
         if (!user) return [];
         const res = await fetch(
-          `https://phone-resale-server-nine.vercel.app/myBuyers?email=${user?.email}`,{
+          `https://phone-resale-server.onrender.com/myBuyers?email=${user?.email}`,{
             headers:{
               autherization: `bearer ${localStorage.getItem("accessToken")}`
             }
@@ -30,7 +30,7 @@ const MyBuyers = () => {
       return <Loading />;
     }
     const handleDeleteBuyers = (id)=>{
-      fetch(`https://phone-resale-server-nine.vercel.app/seller/${id}`,{
+      fetch(`https://phone-resale-server.onrender.com/seller/${id}`,{
         method :"DELETE",
         headers:{
           autherization: `bearer ${localStorage.getItem("accessToken")}`

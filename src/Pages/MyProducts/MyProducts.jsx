@@ -14,7 +14,7 @@ const MyProducts = () => {
     queryKey: ["myProducts", user?.email],
     queryFn: async () => {
       if (!user) return [];
-      const res = await fetch(`https://phone-resale-server-nine.vercel.app/myProducts?email=${user?.email}`,{
+      const res = await fetch(`https://phone-resale-server.onrender.com/myProducts?email=${user?.email}`,{
         headers:{
           autherization: `bearer ${localStorage.getItem("accessToken")}`
         }
@@ -29,7 +29,7 @@ const MyProducts = () => {
     return <Loading />;
   }
   const handleDeleteProducts = (id)=>{
-    fetch(`https://phone-resale-server-nine.vercel.app/myProduct/${id}`,{
+    fetch(`https://phone-resale-server.onrender.com/myProduct/${id}`,{
       method :"DELETE",
       headers:{
         autherization: `bearer ${localStorage.getItem("accessToken")}`
@@ -45,7 +45,7 @@ const MyProducts = () => {
   }
   const handleAdvertise = (product)=>{
   if(product.role !== "advertised"){
-    fetch(`https://phone-resale-server-nine.vercel.app/advertise/${product._id}`,{
+    fetch(`https://phone-resale-server.onrender.com/advertise/${product._id}`,{
       method :"PUT",
       headers:{
         autherization: `bearer ${localStorage.getItem("accessToken")}`

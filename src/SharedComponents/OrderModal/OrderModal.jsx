@@ -26,7 +26,7 @@ const OrderModal = ({ data,setOpenModal }) => {
       return
      }
     const bookingItems = { itemName, itemPrice, email, name, number,sellerEmail, sellerName };
-    fetch('https://phone-resale-server-nine.vercel.app/orders',{
+    fetch('https://phone-resale-server.onrender.com/orders',{
       method: "POST",
       headers:{
         "content-type":"application/json",

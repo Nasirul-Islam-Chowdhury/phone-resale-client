@@ -5,7 +5,7 @@ const useSeller = (email) => {
     const [issellerloading, setissellerLoding] = useState(true)
     useEffect(()=>{
         if(email){
-        fetch(`https://phone-resale-server-nine.vercel.app/seller/${email}`,{
+        fetch(`https://phone-resale-server.onrender.com/seller/${email}`,{
             headers:{
                 autherization: `bearer ${localStorage.getItem("accessToken")}`
             }

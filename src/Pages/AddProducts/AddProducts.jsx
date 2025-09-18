@@ -63,7 +63,7 @@ const AddProducts = () => {
             PostDate,
             images: [imgData.data.url],
           };
-          fetch("https://phone-resale-server-nine.vercel.app/addProduct", {
+          fetch("https://phone-resale-server.onrender.com/addProduct", {
             method: "POST",
             headers: {
               "content-type": "application/json",

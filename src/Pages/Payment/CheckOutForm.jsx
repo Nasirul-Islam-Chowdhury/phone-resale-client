@@ -10,7 +10,7 @@ const CheckOutForm = ({order}) => {
   const stripe = useStripe();
   const elements = useElements();
   useEffect(() => {
-    fetch("https://phone-resale-server-nine.vercel.app/create-payment-intent", {
+    fetch("https://phone-resale-server.onrender.com/create-payment-intent", {
       method: "POST",
       headers: {
          "content-type": "application/json",
@@ -70,7 +70,7 @@ const CheckOutForm = ({order}) => {
         orderId: order._id,
         name : order.name,
       };
-      fetch(`https://phone-resale-server-nine.vercel.app/payments`,
+      fetch(`https://phone-resale-server.onrender.com/payments`,
         {
           method: "POST",
           headers: {

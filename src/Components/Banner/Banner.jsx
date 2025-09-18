@@ -13,7 +13,7 @@ const Banner = () => {
   const [mobiles, setMobiles] = useState([]);
   const [finalMob, setFinalMob] = useState([]);
   useEffect(() => {
-    fetch("https://phone-resale-server-nine.vercel.app/mobiles")
+    fetch("https://phone-resale-server.onrender.com/mobiles")
       .then((res) => res.json())
       .then((data) => {
         const finalData = data.filter((d) => d.status !== "sold");
