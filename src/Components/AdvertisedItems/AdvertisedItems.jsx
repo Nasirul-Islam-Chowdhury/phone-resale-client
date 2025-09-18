@@ -30,14 +30,14 @@ const AdvertisedItems = () => {
                 className="card  card-compact  max-w-[25rem] xl:max-w-[20rem] w-full rounded-sm mx-auto shadow-xl"
               >
                 <figure>
-                  <img className=" h-60 w-full object-cover"  src={product.images[0]} alt="Shoes" />
+                  <img className="rounded-t-md h-40 w-full object-cover"  src={product.images[0]} alt="Shoes" />
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">{product.name}</h2>
-                  <p title={product.description}>{product.description.slice(0, 100)}...</p>
+                  <p className="text-sm" title={product.description}>{product.description.slice(0, 100)}...</p>
                   <h2 className="card-title">Price: ${product.price}</h2>
                   <div className="card-actions justify-end">
-                  <button  className=" w-24 h-8 rounded bg-[#379389] text-white  font-bold mt-4">
+                  <button  className=" w-24 h-8 rounded bg-[#379389] text-white  font-bold mt-1">
                     <Link to={`/category/${product.subcategory}/${product._id}`}>
                       See Details
                     </Link>

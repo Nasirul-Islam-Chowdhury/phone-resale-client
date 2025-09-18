@@ -9,20 +9,20 @@ import { Fade } from 'react-reveal';
 import { Link } from 'react-router-dom';
 
 const MobileCards = ({mobile, i}) => {
-  const [isSerllerVerified, setIsSellerVerified] = useState(false);
-  useEffect(()=>{
-    fetch(`https://phone-resale-server.onrender.com/users/${mobile.sellerEmail}`)
-    .then(res=>res.json())
-    .then(data=>{
-      setIsSellerVerified(data.verified)
-    }
+  // const [isSerllerVerified, setIsSellerVerified] = useState(false);
+  // useEffect(()=>{
+  //   fetch(`https://phone-resale-server.onrender.com/users/${mobile.sellerEmail}`)
+  //   .then(res=>res.json())
+  //   .then(data=>{
+  //     setIsSellerVerified(data.verified)
+  //   }
     
-    )
-    .catch(error=>{
-      setIsSellerVerified(false)
+  //   )
+  //   .catch(error=>{
+  //     setIsSellerVerified(false)
     
-    })
-  },[])
+  //   })
+  // },[])
     return (
         <Fade bottom>
         <div className="card card-compact max-w-[25rem] xl:max-w-[20rem] w-full mx-auto bg-white shadow-xl rounded-md font-primary">
@@ -37,19 +37,19 @@ const MobileCards = ({mobile, i}) => {
               <h2 className="card-title ">{mobile?.name}</h2>
               <p> {mobile.description.length > 70 ? <>{mobile.description.slice(0,70)}</> : mobile.description}
                </p>
-              <div className="flex justify-between gap-5 items-center my-2">
-                <div className="w-24 h-auto rounded-lg   bg-yellow-300 flex justify-center items-center">
-                  <p className="text-center text-sm flex items-center">
-                    <CgDollar className="w-4 h-4" /> Price: ${mobile?.price}
+              <div className="flex justify-between gap-3 items-center mb-1 -mt-1">
+                <div className="w-24 h-auto rounded-lg mx-auto px-2 py-1  bg-yellow-300 flex justify-center items-center">
+                  <p className="text-center  text-nowrap lg:text-xs  text-sm flex flex-nowrap justify-center items-center">
+                  Price: ${mobile?.price}
                   </p>
                 </div>
                 <div>
-                  <p className="flex items-center gap-1">
+                  <p className="lg:text-xs text-sm flex items-center gap-1">
                     <TiLocation className="w-6 h-6" />
                     {mobile?.location}
                   </p>
                 </div>
-                <p className="flex items-center gap-1">
+                <p className="lg:text-xs text-sm flex items-center gap-1">
                   <FaCreativeCommonsBy className="w-5 h-5" />
                   {mobile.condition}
                 </p>
@@ -59,7 +59,7 @@ const MobileCards = ({mobile, i}) => {
                   <div className="flex items-center gap-1">
                     <RxAvatar className="w-5 h-5" />
                     <p className="font-bold">{mobile.sellerName}</p>
-                    {isSerllerVerified && <MdVerified className='text-green-600'></MdVerified>}
+                    {/* {isSerllerVerified && <MdVerified className='text-green-600'></MdVerified>} */}
                   </div>
                 </div>
                 <div>

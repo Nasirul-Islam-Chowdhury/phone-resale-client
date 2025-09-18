@@ -67,10 +67,10 @@ const MyProducts = () => {
          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                {/* row 1 */}
                {myProducts.map((order, i) => (
-             <div key={i} className="card w-96 bg-white shadow-xl text-black">
-             <figure><img className="w-96 h-72" src={order.images[0]} alt="Shoes" /></figure>
+             <div key={i} className="card max-w-96 bg-white shadow-xl text-black">
+             <figure><img className="w-96 h-60" src={order.images[0]} alt="Shoes" /></figure>
              <div className="card-body">
-               <h2 className="card-title">{order.name}</h2>
+               <h2 className="card-title -mt-4">{order.name}</h2>
                <p>{order.description.slice(0,100)}</p>
               <div className="font-semibold flex justify-between items-center">
               <p >Sale Status: { order.status}</p>

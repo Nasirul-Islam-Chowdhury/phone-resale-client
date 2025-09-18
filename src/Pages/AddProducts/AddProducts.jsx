@@ -1,22 +1,26 @@
 import React, { useContext, useState } from "react";
-import { Link, Navigate, json, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Auth } from "../../Contexts/AuthContext";
 import { toast } from "react-hot-toast";
 import Loading from '../../SharedComponents/Loading/Loading'
+
 const AddProducts = () => {
-  const [loading, setLoading] = useState(true)
+  const [submitting, setSubmitting] = useState(false); // loading for submit button
+  const [success, setSuccess] = useState(false); // success state
   const { user } = useContext(Auth);
   const [condition, setCondition] = useState("");
   const date = new Date();
   let day = date.getDate();
   let month = date.getMonth() + 1;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   let year = date.getFullYear();
   let PostDate = `${day}-${month}-${year}`;
   const imgHostKey = import.meta.env.VITE_imgbb_key;
-  
-  const handleAdd = (e) => {
+
+  const handleAdd = async (e) => {
     e.preventDefault();
+    setSubmitting(true);
+    setSuccess(false);
     const form = e.target;
     const sellerName = user?.displayName;
     const sellerEmail = user?.email;
@@ -33,62 +37,71 @@ const AddProducts = () => {
     const photo = form.photo.files[0];
     const formData = new FormData();
     formData.append("image", photo);
-    if (previous_price < price || previous_price == price)
-      return toast.error(
-        "Resale price can not be bigger than/ qual to Previous price"
-      );
 
-    const url = `https://api.imgbb.com/1/upload?key=${imgHostKey}`;
-    fetch(url, {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((imgData) => {
-        if (imgData.success) {
-          const product = {
-            sellerName,
-            sellerEmail,
-            name,
-            subcategory,
-            condition,
-            previous_price,
-            description,
-            price,
-            storage,
-            number,
-            location,
-            model,
-            usedYear,
-            PostDate,
-            images: [imgData.data.url],
-          };
-          fetch("https://phone-resale-server.onrender.com/addProduct", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-              autherization: `bearer ${localStorage.getItem("accessToken")}`
-            },
-            body: JSON.stringify(product),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.acknowledged) {
-                form.reset();
-                setLoading(false)
-                toast.success(`${name} added successfully`);
-                navigate('/dashboard/myProducts')
-              }
-            }
-        
-            ); 
-          } 
+    if (previous_price < price || previous_price === price) {
+      setSubmitting(false);
+      return toast.error(
+        "Resale price can not be bigger than/ equal to Previous price"
+      );
+    }
+
+    try {
+      const url = `https://api.imgbb.com/1/upload?key=${imgHostKey}`;
+      const imgRes = await fetch(url, {
+        method: "POST",
+        body: formData,
+      });
+      const imgData = await imgRes.json();
+
+      if (imgData.success) {
+        const product = {
+          sellerName,
+          sellerEmail,
+          name,
+          subcategory,
+          condition,
+          previous_price,
+          description,
+          price,
+          storage,
+          number,
+          location,
+          model,
+          usedYear,
+          PostDate,
+          images: [imgData.data.url],
+        };
+        const res = await fetch("https://phone-resale-server.onrender.com/addProduct", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            autherization: `bearer ${localStorage.getItem("accessToken")}`
+          },
+          body: JSON.stringify(product),
+        });
+        const data = await res.json();
+        if (data.acknowledged) {
+          form.reset();
+          setSuccess(true);
+          toast.success(`${name} added successfully`);
+          setTimeout(() => {
+            setSubmitting(false);
+            navigate('/dashboard/myProducts');
+          }, 1500); // Give user a moment to see the success message
+        } else {
+          setSubmitting(false);
+          toast.error("Failed to add product. Please try again.");
         }
-        );
-        if(loading){
-          return <Loading/>
-        }
+      } else {
+        setSubmitting(false);
+        toast.error("Image upload failed. Please try again.");
+      }
+    } catch (error) {
+      setSubmitting(false);
+      toast.error("Something went wrong. Please try again.");
+    }
   };
+
   return (
     <div className="flex flex-col items-center min-h-100vh my-10 pt-6 sm:justify-center sm:pt-0">
       <div className="w-full p-8 mt-2 overflow-hidden bg-white shadow-2xl max-w-lg rounded-2xl text-black">
@@ -99,6 +112,11 @@ const AddProducts = () => {
                 <h3 className="text-3xl font-bold text-center">Add Mobile</h3>
               </Link>
             </div>
+            {success && (
+              <div className="my-4 text-green-600 text-center font-semibold">
+                Product added successfully!
+              </div>
+            )}
             <div className="mt-4">
               <h1 className="font-semibold p-1">Seller Name</h1>
               <input
@@ -190,10 +208,8 @@ const AddProducts = () => {
                   required 
                   readOnly
                   defaultValue={PostDate}
-              
                   type="text"
                   className="w-full p-2 border rounded-lg  outline-none"
-           
                 />
               </div>
             </div>
@@ -246,12 +262,14 @@ const AddProducts = () => {
                 required
                 onChange={(e) => setCondition(e.target.value)}
                 className="select select-bordered w-full bg-white"
+                defaultValue=""
               >
-               
-                <option className="hidden" selected>What is your device condition?</option>
-                <option>excellent</option>
-                <option>good</option>
-                <option>fair</option>
+                <option value="" disabled>
+                  What is your device condition?
+                </option>
+                <option value="excellent">excellent</option>
+                <option value="good">good</option>
+                <option value="fair">fair</option>
               </select>
             </div>
             <div className="mt-4">
@@ -269,9 +287,17 @@ const AddProducts = () => {
           <div className="flex items-center mt-4">
             <button
               type="submit"
-              className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-[#252422] rounded-md"
+              className={`w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-[#252422] rounded-md ${submitting ? "opacity-60 cursor-not-allowed" : ""}`}
+              disabled={submitting}
             >
-              Submit
+              {submitting ? (
+                <span className="flex items-center justify-center gap-2">
+                  <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                  Submitting...
+                </span>
+              ) : (
+                "Submit"
+              )}
             </button>
           </div>
         </form>
